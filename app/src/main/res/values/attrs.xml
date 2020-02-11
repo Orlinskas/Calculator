@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="FieldWithInfoView">
+        <attr name="helpText" format="string"/>
+        <attr name="measureFieldText" format="string"/>
+        <attr name="hint" format="string"/>
+        <attr name="titleText" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="MenuWithInfoView">
+        <attr name="mwiv_helpText" format="string"/>
+        <attr name="mwiv_measureFieldText" format="string"/>
+        <attr name="mwiv_hint" format="string"/>
+        <attr name="mwiv_titleText" format="string"/>
+        <attr name="mwiv_values" format="enum"/>
+    </declare-styleable>
+
+    <declare-styleable name="MenuWithoutMeasureView">
+        <attr name="mwmv_helpText" format="string"/>
+        <attr name="mwmv_hint" format="string"/>
+        <attr name="mwmv_titleText" format="string"/>
+        <attr name="mwmv_values" format="enum"/>
+    </declare-styleable>
+
+</resources>
