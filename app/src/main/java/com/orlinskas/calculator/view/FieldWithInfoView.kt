@@ -3,12 +3,15 @@ package com.orlinskas.calculator.view
 import android.animation.Animator
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.github.florent37.viewtooltip.ViewTooltip
 import com.orlinskas.calculator.R
+import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_field_with_info.view.*
 
 class FieldWithInfoView @JvmOverloads
@@ -20,8 +23,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private var hint = "Введiть данi"
     private var titleText = "Заголовок"
 
-    lateinit var tooltip: ViewTooltip
-    private var isShowHelp = false
+    lateinit var tooltip: SimpleTooltip
 
     init {
         init(attrs)
@@ -56,48 +58,39 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             }
         }
 
-        tooltip = ViewTooltip.on(info_image).apply {
-            text(helpText)
-            autoHide(true, 5000)
-            clickToHide(true)
-            align(ViewTooltip.ALIGN.END)
-            position(ViewTooltip.Position.RIGHT)
-            color(ContextCompat.getColor(context, R.color.colorPrimary))
-            //animation(anim)
-        }
-
-        tooltip.onHide {
-            info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
-            isShowHelp = false
-        }
-
         info_image.setOnClickListener {
-            when(isShowHelp) {
-                true -> return@setOnClickListener
-                false -> showHelp()
-            }
-        }
-
-        container.setOnTouchListener { view, _ ->
-            if (view != info_image) {
-                hideHelp()
-            }
-            return@setOnTouchListener true
+            showHelp()
         }
     }
 
     fun showHelp() {
-        if(!isShowHelp) {
-            info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
-            tooltip.show()
-            isShowHelp = true
-        }
+        tooltip = SimpleTooltip.Builder(context).apply {
+            anchorView(info_image)
+            text(helpText)
+            textColor(Color.WHITE)
+            backgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            ignoreOverlay(true)
+            gravity(Gravity.END)
+            animated(false)
+            transparentOverlay(false)
+            dismissOnInsideTouch(true)
+            dismissOnOutsideTouch(true)
+            arrowHeight(25F)
+            arrowWidth(50F)
+            onDismissListener {
+                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
+            }
+            onShowListener {
+                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
+            }
+        }.build()
+
+        tooltip.show()
     }
 
     fun hideHelp() {
-        if(isShowHelp) {
-            tooltip.close()
-        }
+        tooltip.dismiss()
     }
 
     fun getValue(): String {

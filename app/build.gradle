@@ -82,5 +82,6 @@ dependencies {
     //ui
     implementation 'com.tomergoldst.android:tooltips:1.0.10'
     implementation 'com.github.florent37:viewtooltip:1.2.2'
+    implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
 
 }
