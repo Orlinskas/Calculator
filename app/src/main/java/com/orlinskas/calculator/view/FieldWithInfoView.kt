@@ -1,15 +1,12 @@
 package com.orlinskas.calculator.view
 
-import android.animation.Animator
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import com.github.florent37.viewtooltip.ViewTooltip
 import com.orlinskas.calculator.R
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_field_with_info.view.*
@@ -48,41 +45,33 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             ta.recycle()
         }
 
-        val anim = object : ViewTooltip.TooltipAnimation {
-            override fun animateEnter(view: View?, animatorListener: Animator.AnimatorListener?) {
-                //
-            }
-
-            override fun animateExit(view: View?, animatorListener: Animator.AnimatorListener?) {
-                //
-            }
-        }
-
         info_image.setOnClickListener {
             showHelp()
         }
     }
 
-    fun showHelp() {
+    private fun showHelp() {
         tooltip = SimpleTooltip.Builder(context).apply {
             anchorView(info_image)
             text(helpText)
-            textColor(Color.WHITE)
-            backgroundColor(ContextCompat.getColor(context, R.color.colorPrimary))
             arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            contentView(R.layout.custom_tool_tip, R.id.tv_text)
             ignoreOverlay(true)
             gravity(Gravity.END)
             animated(false)
             transparentOverlay(false)
             dismissOnInsideTouch(true)
             dismissOnOutsideTouch(true)
-            arrowHeight(25F)
+            arrowHeight(35F)
             arrowWidth(50F)
+            margin(5F)
             onDismissListener {
                 info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
+                info_text.visibility = View.VISIBLE
             }
             onShowListener {
                 info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
+                info_text.visibility = View.INVISIBLE
             }
         }.build()
 

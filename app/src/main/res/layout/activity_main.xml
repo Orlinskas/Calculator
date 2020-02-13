@@ -104,12 +104,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            app:mwmv_helpText="Оптимальная - используется оригинальная подкладка согластно стандарту. Економ - используется пенопластовые маты и комплектующие производства Украина"
-            app:mwmv_hint="@string/hint_text"
+            android:layout_marginBottom="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/isolation_field"
+            app:mwmv_helpText="Оптимальная - используется оригинальная подкладка согластно стандарту. Економ - используется пенопластовые маты и комплектующие производства Украина"
+            app:mwmv_hint="@string/hint_text"
             app:mwmv_titleText="Автоматичне регулювання" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="Розрахувати"
+            app:cornerRadius="15dp"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/automatic_field" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

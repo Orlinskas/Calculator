@@ -1,15 +1,15 @@
 package com.orlinskas.calculator.view
 
-import android.animation.Animator
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
 import android.widget.ArrayAdapter
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import com.github.florent37.viewtooltip.ViewTooltip
 import com.orlinskas.calculator.R
+import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_menu_with_info.view.*
 
 class MenuWithInfoView @JvmOverloads
@@ -21,8 +21,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private var hint = "Введiть данi"
     private var titleText = "Заголовок"
 
-    lateinit var tooltip: ViewTooltip
-    private var isShowHelp = false
+    lateinit var tooltip: SimpleTooltip
 
     init {
         init(attrs)
@@ -48,43 +47,8 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             ta.recycle()
         }
 
-        val anim = object : ViewTooltip.TooltipAnimation {
-            override fun animateEnter(view: View?, animatorListener: Animator.AnimatorListener?) {
-                //
-            }
-
-            override fun animateExit(view: View?, animatorListener: Animator.AnimatorListener?) {
-                //
-            }
-        }
-
-        tooltip = ViewTooltip.on(info_image).apply {
-            text(helpText)
-            autoHide(true, 5000)
-            clickToHide(true)
-            align(ViewTooltip.ALIGN.END)
-            position(ViewTooltip.Position.RIGHT)
-            color(ContextCompat.getColor(context, R.color.colorPrimary))
-            //animation(anim)
-        }
-
-        tooltip.onHide {
-            info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
-            isShowHelp = false
-        }
-
         info_image.setOnClickListener {
-            when(isShowHelp) {
-                true -> return@setOnClickListener
-                false -> showHelp()
-            }
-        }
-
-        container.setOnTouchListener { view, _ ->
-            if (view != info_image) {
-                hideHelp()
-            }
-            return@setOnTouchListener true
+            showHelp()
         }
     }
 
@@ -93,18 +57,36 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         field_dropdown.setAdapter(adapter)
     }
 
-    fun showHelp() {
-        if(!isShowHelp) {
-            info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
-            tooltip.show()
-            isShowHelp = true
-        }
+    private fun showHelp() {
+        tooltip = SimpleTooltip.Builder(context).apply {
+            anchorView(info_image)
+            text(helpText)
+            arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            contentView(R.layout.custom_tool_tip, R.id.tv_text)
+            ignoreOverlay(true)
+            gravity(Gravity.END)
+            animated(false)
+            transparentOverlay(false)
+            dismissOnInsideTouch(true)
+            dismissOnOutsideTouch(true)
+            arrowHeight(35F)
+            arrowWidth(50F)
+            margin(5F)
+            onDismissListener {
+                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
+                info_text.visibility = View.VISIBLE
+            }
+            onShowListener {
+                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
+                info_text.visibility = View.INVISIBLE
+            }
+        }.build()
+
+        tooltip.show()
     }
 
     fun hideHelp() {
-        if(isShowHelp) {
-            tooltip.close()
-        }
+        tooltip.dismiss()
     }
 
     fun getValue(): String {
