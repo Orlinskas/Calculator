@@ -32,27 +32,26 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.FieldWithInfoView)
         try {
-            ta.getText(R.styleable.FieldWithInfoView_helpText)?.let { helpText = it.toString() }
-            ta.getText(R.styleable.FieldWithInfoView_measureFieldText)?.let { measureFieldText = it.toString() }
-            ta.getText(R.styleable.FieldWithInfoView_hint)?.let { hint = it.toString() }
-            ta.getText(R.styleable.FieldWithInfoView_titleText)?.let { titleText = it.toString() }
+            ta.getText(R.styleable.field_with_info_help_text)?.let { helpText = it.toString() }
+            ta.getText(R.styleable.field_with_info_measure_field_text)?.let { measureFieldText = it.toString() }
+            ta.getText(R.styleable.field_with_info_hint)?.let { hint = it.toString() }
+            ta.getText(R.styleable.field_with_info_title_text)?.let { titleText = it.toString() }
 
-            info_text.text = titleText
-            input_field.hint = hint
-            measure_field.setText(measureFieldText)
-
+            view_field_info_text.text = titleText
+            view_field_input_field.hint = hint
+            view_field_measure_field.setText(measureFieldText)
         } finally {
             ta.recycle()
         }
 
-        info_image.setOnClickListener {
+        view_field_info_image.setOnClickListener {
             showHelp()
         }
     }
 
     private fun showHelp() {
         tooltip = SimpleTooltip.Builder(context).apply {
-            anchorView(info_image)
+            anchorView(view_field_info_image)
             text(helpText)
             arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
             contentView(R.layout.custom_tool_tip, R.id.tv_text)
@@ -66,12 +65,12 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             arrowWidth(50F)
             margin(5F)
             onDismissListener {
-                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
-                info_text.visibility = View.VISIBLE
+                view_field_info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
+                view_field_info_text.visibility = View.VISIBLE
             }
             onShowListener {
-                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
-                info_text.visibility = View.INVISIBLE
+                view_field_info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
+                view_field_info_text.visibility = View.INVISIBLE
             }
         }.build()
 
@@ -83,7 +82,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun getValue(): String {
-        return input_field.text.toString()
+        return view_field_input_field.text.toString()
     }
 }
 

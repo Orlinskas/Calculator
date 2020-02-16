@@ -33,33 +33,33 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.MenuWithInfoView)
         try {
-            ta.getText(R.styleable.MenuWithInfoView_mwiv_helpText)?.let { helpText = it.toString() }
-            ta.getText(R.styleable.MenuWithInfoView_mwiv_measureFieldText)?.let { measureFieldText = it.toString() }
-            ta.getText(R.styleable.MenuWithInfoView_mwiv_hint)?.let { hint = it.toString() }
-            ta.getText(R.styleable.MenuWithInfoView_mwiv_titleText)?.let { titleText = it.toString() }
-            ta.getTextArray(R.styleable.MenuWithInfoView_mwiv_values)?.let {  }
+            ta.getText(R.styleable.menu_with_info_help_text)?.let { helpText = it.toString() }
+            ta.getText(R.styleable.menu_with_info_measure_field_text)?.let { measureFieldText = it.toString() }
+            ta.getText(R.styleable.menu_with_info_hint)?.let { hint = it.toString() }
+            ta.getText(R.styleable.menu_with_info_title_text)?.let { titleText = it.toString() }
+            ta.getTextArray(R.styleable.menu_with_info_values)?.let {  }
 
-            info_text.text = titleText
-            field_dropdown.hint = hint
-            measure_field.setText(measureFieldText)
+            view_menu_info_text.text = titleText
+            view_menu_field_dropdown.hint = hint
+            view_menu_measure_field.setText(measureFieldText)
 
         } finally {
             ta.recycle()
         }
 
-        info_image.setOnClickListener {
+        view_menu_info_image.setOnClickListener {
             showHelp()
         }
     }
 
     fun <T> setValues(list: List<T>) {
         val adapter = ArrayAdapter<T>(context, R.layout.row_dropdown_menu, list)
-        field_dropdown.setAdapter(adapter)
+        view_menu_field_dropdown.setAdapter(adapter)
     }
 
     private fun showHelp() {
         tooltip = SimpleTooltip.Builder(context).apply {
-            anchorView(info_image)
+            anchorView(view_menu_info_image)
             text(helpText)
             arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
             contentView(R.layout.custom_tool_tip, R.id.tv_text)
@@ -73,12 +73,12 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             arrowWidth(50F)
             margin(5F)
             onDismissListener {
-                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
-                info_text.visibility = View.VISIBLE
+                view_menu_info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_rounded))
+                view_menu_info_text.visibility = View.VISIBLE
             }
             onShowListener {
-                info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
-                info_text.visibility = View.INVISIBLE
+                view_menu_info_image.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_info_24px_filed))
+                view_menu_info_text.visibility = View.INVISIBLE
             }
         }.build()
 
@@ -90,7 +90,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun getValue(): String {
-        return field_dropdown.text.toString()
+        return view_menu_field_dropdown.text.toString()
     }
 }
 
