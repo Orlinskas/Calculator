@@ -32,10 +32,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.FieldWithInfoView)
         try {
-            ta.getText(R.styleable.field_with_info_help_text)?.let { helpText = it.toString() }
-            ta.getText(R.styleable.field_with_info_measure_field_text)?.let { measureFieldText = it.toString() }
-            ta.getText(R.styleable.field_with_info_hint)?.let { hint = it.toString() }
-            ta.getText(R.styleable.field_with_info_title_text)?.let { titleText = it.toString() }
+            ta.getText(R.styleable.FieldWithInfoView_field_with_info_help_text)?.let { helpText = it.toString() }
+            ta.getText(R.styleable.FieldWithInfoView_field_with_info_measure_field_text)?.let { measureFieldText = it.toString() }
+            ta.getText(R.styleable.FieldWithInfoView_field_with_info_hint)?.let { hint = it.toString() }
+            ta.getText(R.styleable.FieldWithInfoView_field_with_info_title_text)?.let { titleText = it.toString() }
 
             view_field_info_text.text = titleText
             view_field_input_field.hint = hint

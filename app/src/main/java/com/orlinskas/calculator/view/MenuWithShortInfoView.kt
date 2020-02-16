@@ -32,10 +32,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
         val ta = context.obtainStyledAttributes(attributeSet, R.styleable.MenuWithShortInfoView)
         try {
-            ta.getText(R.styleable.menu_with_short_info_help_text)?.let { helpText = it.toString() }
-            ta.getText(R.styleable.menu_with_short_info_hint)?.let { hint = it.toString() }
-            ta.getText(R.styleable.menu_with_short_info_title_text)?.let { titleText = it.toString() }
-            ta.getTextArray(R.styleable.menu_with_short_info_values)?.let {  }
+            ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_help_text)?.let { helpText = it.toString() }
+            ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_hint)?.let { hint = it.toString() }
+            ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_title_text)?.let { titleText = it.toString() }
+            ta.getTextArray(R.styleable.MenuWithShortInfoView_menu_with_short_info_values)?.let {  }
 
             view_menu_short_info_text.text = titleText
             view_menu_short_field_dropdown.hint = hint

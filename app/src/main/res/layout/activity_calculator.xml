@@ -41,9 +41,9 @@
             app:layout_constraintTop_toBottomOf="@id/activity_calculator_title" />
 
 
-        <com.orlinskas.calculator.view.FieldWithInfoView
-            android:layout_width=""
-            android:layout_height=""
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

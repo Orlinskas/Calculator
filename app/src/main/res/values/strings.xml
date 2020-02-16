@@ -1,4 +1,37 @@
 <resources>
     <string name="app_name">Calculator</string>
     <string name="hint_text">Введiть данi</string>
+
+    <string name="basicCalculator">Базовий калькулятор</string>
+    <string name="basicCalculatorDescription">Вимагає мінімальну кількість вхідних даних і дає приблизний розрахунок</string>
+    <string name="basicCalculatorRulesDescription">Даний калькулятор пропонує приблизний розрахунок вартості необхідного обладнання для теплої підлоги Вашої кімнати. У розрахунку прийняті наступні допущення:</string> 
+    
+    <string name="basicCalculatorRules1">- Теплоізолювання кімнати хороша (пінопласт мінімум 50 мм);</string>
+    <string name="basicCalculatorRules2">- Розмір труби теплої підлоги 16х2 мм.</string>
+
+    <string name="wall_height">Довжина приміщення</string>
+    <string name="wall_height_description">Довга стіна приміщення</string>
+
+    <string name="wall_weight">Ширина приміщення</string>
+    <string name="wall_weight_description">Коротка стіна приміщення</string>
+
+    <string name="field_description">Введіть дані</string>
+    <string name="field_description_description">Введіть дані</string>
+
+    <string name="field_step_long">Крок укладання труб</string>
+    <string name="field_step_long_description">https://icma.com.ua/images/step-pipe.jpg</string>
+
+    <string name="field_collector_distance">Відстань від колектора до контуру теплої підлоги</string>
+    <string name="field_collector_distance_description">Довжина магістралі труби в одну сторону від колекторної шафи до початку кімнати з теплою підлогою</string>
+
+    <string name="field_isolation">Теплоізоляція підлоги</string>
+    <string name="field_isolation_description_optimal">Оптимальна - використовується оригінальна підкладка ICMA (Італія) згідно стандарту UNI EN 13163;</string>
+    <string name="field_isolation_description_econom">Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
+
+    <string name="field_regulation">Автоматичне регулювання</string>
+    <string name="field_regulation_description">Удосконалення системи управління теплою підлогою, передбачає за собою установку кімнатного термостата, блоку управління сервоприводами теплої підлоги, які відіб\'ються в комерційній пропозиції</string>
+
+    <string name="btn_calculate">Розрахувати</string>
+
+
 </resources>
