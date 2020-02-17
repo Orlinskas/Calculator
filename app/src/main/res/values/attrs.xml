@@ -14,14 +14,14 @@
         <attr name="menu_with_info_measure_field_text" format="string"/>
         <attr name="menu_with_info_hint" format="string"/>
         <attr name="menu_with_info_title_text" format="string"/>
-        <attr name="menu_with_info_values" format="enum"/>
+        <attr name="android:entries"/>
     </declare-styleable>
 
     <declare-styleable name="MenuWithShortInfoView">
         <attr name="menu_with_short_info_help_text" format="string"/>
         <attr name="menu_with_short_info_hint" format="string"/>
         <attr name="menu_with_short_info_title_text" format="string"/>
-        <attr name="menu_with_short_info_values" format="enum"/>
+        <attr name="android:entries"/>
     </declare-styleable>
 
 </resources>

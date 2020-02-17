@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_calculator_container"
         android:layout_width="match_parent"
@@ -22,7 +21,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
-            android:text="Данный калькулятор предлагает приблизительный расчет стоимости"
+            android:text="@string/basicCalculatorDescription"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +39,90 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activity_calculator_title" />
 
+        <com.orlinskas.calculator.view.FieldWithInfoView
+            android:id="@+id/height_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activity_calculator_divider_view"
 
+            app:field_with_info_help_text="@string/wall_height_description"
+            app:field_with_info_measure_field_text="@string/measure_metr"
+            app:field_with_info_hint="@string/hint_text"
+            app:field_with_info_title_text="@string/wall_height"/>
 
+        <com.orlinskas.calculator.view.FieldWithInfoView
+            android:id="@+id/weight_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/height_field"
 
+            app:field_with_info_help_text="@string/wall_weight_description"
+            app:field_with_info_measure_field_text="@string/measure_metr"
+            app:field_with_info_hint="@string/hint_text"
+            app:field_with_info_title_text="@string/wall_weight"/>
 
+        <com.orlinskas.calculator.view.MenuWithInfoView
+            android:id="@+id/step_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/height_field"
+
+            app:menu_with_info_help_text="@string/field_step_long_description"
+            app:menu_with_info_hint="@string/hint_text"
+            app:menu_with_info_measure_field_text="@string/measure_sant"
+            app:menu_with_info_title_text="@string/field_step_long"
+            android:entries="@array/steps"/>
+
+        <com.orlinskas.calculator.view.FieldWithInfoView
+            android:id="@+id/collector_distance_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/step_field"
+
+            app:field_with_info_help_text="@string/field_collector_distance_description"
+            app:field_with_info_measure_field_text="@string/measure_metr"
+            app:field_with_info_hint="@string/hint_text"
+            app:field_with_info_title_text="@string/field_collector_distance"/>
+
+        <com.orlinskas.calculator.view.MenuWithShortInfoView
+            android:id="@+id/isolation_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/collector_distance_field"
+
+            app:menu_with_short_info_help_text="@string/field_isolation_description_optimal"
+            app:menu_with_short_info_hint="@string/hint_text"
+            app:menu_with_short_info_title_text="@string/field_isolation"
+            android:entries="@array/isolaion"/>
+
+        <com.orlinskas.calculator.view.MenuWithShortInfoView
+            android:id="@+id/regulation_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/isolation_field"
+
+            app:menu_with_short_info_help_text="@string/field_regulation_description"
+            app:menu_with_short_info_hint="@string/hint_text"
+            app:menu_with_short_info_title_text="@string/field_regulation"
+            android:entries="@array/regulation"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

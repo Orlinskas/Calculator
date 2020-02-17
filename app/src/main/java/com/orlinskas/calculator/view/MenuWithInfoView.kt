@@ -20,6 +20,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private var measureFieldText = "м"
     private var hint = "Введiть данi"
     private var titleText = "Заголовок"
+    private lateinit var values: List<String>
 
     lateinit var tooltip: SimpleTooltip
 
@@ -37,11 +38,15 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             ta.getText(R.styleable.MenuWithInfoView_menu_with_info_measure_field_text)?.let { measureFieldText = it.toString() }
             ta.getText(R.styleable.MenuWithInfoView_menu_with_info_hint)?.let { hint = it.toString() }
             ta.getText(R.styleable.MenuWithInfoView_menu_with_info_title_text)?.let { titleText = it.toString() }
-            ta.getTextArray(R.styleable.MenuWithInfoView_menu_with_info_values)?.let {  }
+            ta.getTextArray(R.styleable.MenuWithInfoView_android_entries)?.let { array ->
+                values = array.toList().map {
+                it.toString()
+            }}
 
             view_menu_info_text.text = titleText
             view_menu_field_dropdown.hint = hint
             view_menu_measure_field.setText(measureFieldText)
+            setValues(values)
 
         } finally {
             ta.recycle()

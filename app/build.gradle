@@ -14,13 +14,6 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        kapt {
-            arguments {
-                arg("room.schemaLocation", "$projectDir/schemas".toString())
-                arg("room.incremental", "true")
-                arg("room.expandProjection", "true")
-            }
-        }
     }
     buildTypes {
         release {
@@ -80,8 +73,5 @@ dependencies {
     implementation "ua.brander.core:core:1.0.0"
 
     //ui
-    implementation 'com.tomergoldst.android:tooltips:1.0.10'
-    implementation 'com.github.florent37:viewtooltip:1.2.2'
     implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
-
 }

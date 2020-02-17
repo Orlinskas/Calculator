@@ -19,6 +19,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     private var helpText = "Подсказка по умолчанию"
     private var hint = "Введiть данi"
     private var titleText = "Заголовок"
+    private lateinit var values: List<String>
 
     lateinit var tooltip: SimpleTooltip
 
@@ -35,10 +36,14 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_help_text)?.let { helpText = it.toString() }
             ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_hint)?.let { hint = it.toString() }
             ta.getText(R.styleable.MenuWithShortInfoView_menu_with_short_info_title_text)?.let { titleText = it.toString() }
-            ta.getTextArray(R.styleable.MenuWithShortInfoView_menu_with_short_info_values)?.let {  }
+            ta.getTextArray(R.styleable.MenuWithShortInfoView_android_entries)?.let { array ->
+                values = array.toList().map {
+                    it.toString()
+                }}
 
             view_menu_short_info_text.text = titleText
             view_menu_short_field_dropdown.hint = hint
+            setValues(values)
 
         } finally {
             ta.recycle()

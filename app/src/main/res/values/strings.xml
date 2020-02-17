@@ -25,7 +25,7 @@
     <string name="field_collector_distance_description">Довжина магістралі труби в одну сторону від колекторної шафи до початку кімнати з теплою підлогою</string>
 
     <string name="field_isolation">Теплоізоляція підлоги</string>
-    <string name="field_isolation_description_optimal">Оптимальна - використовується оригінальна підкладка ICMA (Італія) згідно стандарту UNI EN 13163;</string>
+    <string name="field_isolation_description_optimal">Оптимальна - використовується оригінальна підкладка ICMA (Італія) згідно стандарту UNI EN 13163; /n Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
     <string name="field_isolation_description_econom">Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
 
     <string name="field_regulation">Автоматичне регулювання</string>
@@ -33,5 +33,25 @@
 
     <string name="btn_calculate">Розрахувати</string>
 
+    <string name="measure_metr">м</string>
+    <string name="measure_sant">см</string>
+
+    <string-array name="steps">
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="isolaion">
+        <item>Оптимальна</item>
+        <item>Економ</item>
+    </string-array>
+
+    <string-array name="regulation">
+        <item>Так</item>
+        <item>Нi</item>
+    </string-array>
 
 </resources>
