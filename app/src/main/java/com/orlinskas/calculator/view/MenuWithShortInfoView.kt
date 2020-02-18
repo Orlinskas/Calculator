@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.view_menu_with_short_info.view.*
 
 class MenuWithShortInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    ConstraintLayout(context, attrs, defStyleAttr) {
+    RelativeLayout(context, attrs, defStyleAttr) {
 
     private var helpText = "Подсказка по умолчанию"
     private var hint = "Введiть данi"
@@ -27,7 +28,6 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         init(attrs)
     }
 
-    @SuppressLint("CustomViewStyleable")
     private fun init(attributeSet: AttributeSet?) {
         View.inflate(context, R.layout.view_menu_with_short_info, this)
 
@@ -43,7 +43,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 
             view_menu_short_info_text.text = titleText
             view_menu_short_field_dropdown.hint = hint
-            setValues(values)
+            //setValues(values)
 
         } finally {
             ta.recycle()
@@ -57,6 +57,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     fun <T> setValues(list: List<T>) {
         val adapter = ArrayAdapter<T>(context, R.layout.row_dropdown_menu, list)
         view_menu_short_field_dropdown.setAdapter(adapter)
+        invalidate()
     }
 
     private fun showHelp() {
@@ -85,10 +86,12 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         }.build()
 
         tooltip.show()
+        invalidate()
     }
 
     fun hideHelp() {
         tooltip.dismiss()
+        invalidate()
     }
 
     fun getValue(): String {

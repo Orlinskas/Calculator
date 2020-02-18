@@ -25,13 +25,14 @@
     <string name="field_collector_distance_description">Довжина магістралі труби в одну сторону від колекторної шафи до початку кімнати з теплою підлогою</string>
 
     <string name="field_isolation">Теплоізоляція підлоги</string>
-    <string name="field_isolation_description_optimal">Оптимальна - використовується оригінальна підкладка ICMA (Італія) згідно стандарту UNI EN 13163; /n Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
+    <string name="field_isolation_description_optimal">Оптимальна - використовується оригінальна підкладка ICMA (Італія) згідно стандарту UNI EN 13163; \n Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
     <string name="field_isolation_description_econom">Економ - використовуються пінопластові мати і комплектуючі виробництва Україна</string>
 
     <string name="field_regulation">Автоматичне регулювання</string>
     <string name="field_regulation_description">Удосконалення системи управління теплою підлогою, передбачає за собою установку кімнатного термостата, блоку управління сервоприводами теплої підлоги, які відіб\'ються в комерційній пропозиції</string>
 
     <string name="btn_calculate">Розрахувати</string>
+    <string name="btn_info"><u>Інформація</u></string>
 
     <string name="measure_metr">м</string>
     <string name="measure_sant">см</string>

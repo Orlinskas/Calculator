@@ -15,17 +15,43 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/btn_info"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logo_image_view"
+            android:layout_width="184dp"
+            android:layout_height="71dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo_ru" />
+
+        <TextView
             android:id="@+id/activity_calculator_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:text="@string/basicCalculatorDescription"
+            android:text="@string/basicCalculator"
             android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:background="?android:attr/actionBarItemBackground"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/logo_image_view" />
 
         <View
             android:id="@+id/activity_calculator_divider_view"
@@ -72,15 +98,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:entries="@array/steps"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/height_field"
 
+            app:layout_constraintTop_toBottomOf="@id/weight_field"
             app:menu_with_info_help_text="@string/field_step_long_description"
             app:menu_with_info_hint="@string/hint_text"
             app:menu_with_info_measure_field_text="@string/measure_sant"
-            app:menu_with_info_title_text="@string/field_step_long"
-            android:entries="@array/steps"/>
+            app:menu_with_info_title_text="@string/field_step_long" />
 
         <com.orlinskas.calculator.view.FieldWithInfoView
             android:id="@+id/collector_distance_field"
@@ -123,6 +149,22 @@
             app:menu_with_short_info_hint="@string/hint_text"
             app:menu_with_short_info_title_text="@string/field_regulation"
             android:entries="@array/regulation"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/btn_calculate"
+            app:cornerRadius="15dp"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/regulation_field" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

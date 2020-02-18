@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.RelativeLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.view_menu_with_info.view.*
 
 class MenuWithInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    ConstraintLayout(context, attrs, defStyleAttr) {
+    RelativeLayout(context, attrs, defStyleAttr) {
 
     private var helpText = "Подсказка по умолчанию"
     private var measureFieldText = "м"
@@ -28,7 +29,6 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         init(attrs)
     }
 
-    @SuppressLint("CustomViewStyleable")
     private fun init(attributeSet: AttributeSet?) {
         View.inflate(context, R.layout.view_menu_with_info, this)
 
@@ -46,7 +46,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
             view_menu_info_text.text = titleText
             view_menu_field_dropdown.hint = hint
             view_menu_measure_field.setText(measureFieldText)
-            setValues(values)
+            //setValues(values)
 
         } finally {
             ta.recycle()

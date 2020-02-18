@@ -1,11 +1,10 @@
 package com.orlinskas.calculator.view
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
+import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
@@ -13,7 +12,7 @@ import kotlinx.android.synthetic.main.view_field_with_info.view.*
 
 class FieldWithInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    ConstraintLayout(context, attrs, defStyleAttr) {
+    RelativeLayout(context, attrs, defStyleAttr) {
 
     private var helpText = "Подсказка по умолчанию"
     private var measureFieldText = "м"
@@ -26,7 +25,6 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         init(attrs)
     }
 
-    @SuppressLint("CustomViewStyleable")
     private fun init(attributeSet: AttributeSet?) {
         View.inflate(context, R.layout.view_field_with_info, this)
 
