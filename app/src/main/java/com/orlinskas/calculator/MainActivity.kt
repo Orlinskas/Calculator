@@ -2,21 +2,25 @@ package com.orlinskas.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.SyncStateContract
+import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_calculator.*
 
 class MainActivity : AppCompatActivity() {
+    private val steps: Array<CharSequence> = resources.getTextArray(R.array.steps)
+    private val isolation: Array<CharSequence> = resources.getTextArray(R.array.isolaion)
+    private val regulation: Array<CharSequence> = resources.getTextArray(R.array.regulation)
+    private val bottomSheetDialogFragment = BottomSheetInfo()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
 
-        val steps: List<Steps> = Steps.values().toList()
-        val isolation: List<Isolation> = Isolation.values().toList()
-        val regulation: List<Regulation> = Regulation.values().toList()
+        step_field.setValues(steps.toList())
+        isolation_field.setValues(isolation.toList())
+        regulation_field.setValues(regulation.toList())
 
-        step_field.setValues(steps)
-        isolation_field.setValues(isolation)
-        regulation_field.setValues(regulation)
+        info_btn.setOnClickListener {
+            bottomSheetDialogFragment.show(supportFragmentManager, "bottomSheet")
+        }
     }
 }

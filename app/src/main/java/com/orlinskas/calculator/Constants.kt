@@ -10,12 +10,3 @@ enum class Steps(val lenght: Int) {
     E(30)
 }
 
-enum class Isolation(val type: String) {
-    Optimal("opt"),
-    Econom("eco")
-}
-
-enum class Regulation(val isHas: Boolean){
-    Yes(true),
-    No(false)
-}
