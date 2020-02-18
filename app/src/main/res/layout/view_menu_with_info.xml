@@ -67,7 +67,9 @@
         <AutoCompleteTextView
             android:id="@+id/view_menu_field_dropdown"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:editable="false"
+            android:focusable="false"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,8 +94,6 @@
             android:layout_height="match_parent"
             android:editable="false"
             android:focusable="false"
-            android:maxLength="3"
-            android:maxLines="1"
             android:text="м"
             android:textAlignment="center" />
 
