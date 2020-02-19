@@ -1,11 +1,12 @@
 package com.orlinskas.calculator.repository
+import com.orlinskas.calculator.ApiResponse
+import com.orlinskas.calculator.model.container.ResponseData
+import com.orlinskas.calculator.model.container.ResponseWithListData
+import com.orlinskas.calculator.model.container.ResponseWithMapData
 import retrofit2.Response
 import ua.brander.core.exception.Failure
 import ua.brander.core.functional.Either
 import ua.brander.core.simple.repository.Convertable
-import ua.brander.meetingroom.data.storage.model.ResponseData
-import ua.brander.meetingroom.data.storage.model.ResponseWithListData
-import ua.brander.meetingroom.data.storage.model.ResponseWithMapData
 import ua.brander.meetingroom.extensions.getMessage
 
 interface Repository<T : Convertable<R>, R> {
@@ -22,8 +23,11 @@ interface Repository<T : Convertable<R>, R> {
         return it.map { it.convert() }
     }
 
-    fun convertToLocalFormat(it: Map<String, List<T>>): Map<String, List<R>> =
-        it.keys.zip((it.values.map { list -> list.map { it.convert() } })).toMap()
+    fun convertToLocalFormat(it: Map<String, T>): Map<String, R> {
+        return it.mapValues {
+            it.value.convert()
+        }
+    }
 
     fun updateOrStoreLocally(result: Any?)
 
@@ -37,11 +41,11 @@ interface Repository<T : Convertable<R>, R> {
     ): Either<Failure, List<R>> {
         return request(response, { convertToLocalFormat(it) }, default)
     }
-    
+
     fun request(
         response: Response<ResponseWithMapData<T>>,
-        default: Map<String, List<R>>
-    ): Either<Failure, Map<String, List<R>>> {
+        default: Map<String, R>
+    ): Either<Failure, Map<String, R>> {
         return request(response, { convertToLocalFormat(it) }, default)
     }
 
@@ -52,7 +56,7 @@ interface Repository<T : Convertable<R>, R> {
     ): Either<Failure, R> {
         try {
             when (response.code()) {
-                OK.code -> {
+                ApiResponse.OK.code -> {
                     val data = response.body()?.data
                     val result = if (data == null) {
                         default
@@ -62,7 +66,7 @@ interface Repository<T : Convertable<R>, R> {
                     updateOrStoreLocally(result)
                     return Either.Right(result)
                 }
-                INVALID_INPUT.code, INVALID_DATA.code, CONFLICT_TIME.code -> {
+                ApiResponse.INVALID_INPUT.code, ApiResponse.INVALID_DATA.code, ApiResponse.CONFLICT_TIME.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -70,7 +74,7 @@ interface Repository<T : Convertable<R>, R> {
                         )
                     )
                 }
-                INVALID_TOKEN.code, DEACTIVATED.code -> {
+                ApiResponse.INVALID_TOKEN.code, ApiResponse.DEACTIVATED.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -85,7 +89,7 @@ interface Repository<T : Convertable<R>, R> {
         } catch (exception: Throwable) {
             return Either.Left(
                 Failure.ServerErrorWithDefaultData(
-                    NOT_FOUND.code,
+                    ApiResponse.NOT_FOUND.code,
                     exception.toString(),
                     default
                 )
@@ -100,7 +104,7 @@ interface Repository<T : Convertable<R>, R> {
     ): Either<Failure, List<R>> {
         try {
             when (response.code()) {
-                OK.code -> {
+                ApiResponse.OK.code -> {
                     val data = response.body()?.data
                     val result = if (data == null) {
                         default
@@ -111,7 +115,7 @@ interface Repository<T : Convertable<R>, R> {
                     updateOrStoreLocally(result)
                     return Either.Right(result)
                 }
-                INVALID_INPUT.code, INVALID_DATA.code -> {
+                ApiResponse.INVALID_INPUT.code, ApiResponse.INVALID_DATA.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -119,7 +123,7 @@ interface Repository<T : Convertable<R>, R> {
                         )
                     )
                 }
-                INVALID_TOKEN.code, DEACTIVATED.code -> {
+                ApiResponse.INVALID_TOKEN.code, ApiResponse.DEACTIVATED.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -134,7 +138,7 @@ interface Repository<T : Convertable<R>, R> {
         } catch (exception: Throwable) {
             return Either.Left(
                 Failure.ServerErrorWithDefaultData(
-                    NOT_FOUND.code,
+                    ApiResponse.NOT_FOUND.code,
                     exception.toString(),
                     default
                 )
@@ -144,12 +148,12 @@ interface Repository<T : Convertable<R>, R> {
 
     fun request(
         response: Response<ResponseWithMapData<T>>,
-        transform: (Map<String, List<T>>) -> Map<String, List<R>>,
-        default: Map<String, List<R>>
-    ): Either<Failure, Map<String, List<R>>> {
+        transform: (Map<String, T>) -> Map<String, R>,
+        default: Map<String, R>
+    ): Either<Failure, Map<String, R>> {
         try {
             when (response.code()) {
-                OK.code -> {
+                ApiResponse.OK.code -> {
                     val data = response.body()?.data
                     val result = if (data == null) {
                         default
@@ -160,7 +164,7 @@ interface Repository<T : Convertable<R>, R> {
                     updateOrStoreLocally(result)
                     return Either.Right(result)
                 }
-                INVALID_INPUT.code, INVALID_DATA.code -> {
+                ApiResponse.INVALID_INPUT.code, ApiResponse.INVALID_DATA.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -168,7 +172,7 @@ interface Repository<T : Convertable<R>, R> {
                         )
                     )
                 }
-                INVALID_TOKEN.code, DEACTIVATED.code -> {
+                ApiResponse.INVALID_TOKEN.code, ApiResponse.DEACTIVATED.code -> {
                     return Either.Left(
                         Failure.ServerErrorWithDescription(
                             response.code(),
@@ -183,7 +187,7 @@ interface Repository<T : Convertable<R>, R> {
         } catch (exception: Throwable) {
             return Either.Left(
                 Failure.ServerErrorWithDefaultData(
-                    NOT_FOUND.code,
+                    ApiResponse.NOT_FOUND.code,
                     exception.toString(),
                     default
                 )
