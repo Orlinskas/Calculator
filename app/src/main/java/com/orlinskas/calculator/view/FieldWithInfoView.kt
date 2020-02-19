@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_field_with_info.view.*
+import ua.brander.meetingroom.extensions.showError
 
 class FieldWithInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -84,7 +85,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun setError(message: String) {
-        view_field_input_layout.error = message
+        view_field_input_layout.showError(message)
     }
 
     fun hideError() {

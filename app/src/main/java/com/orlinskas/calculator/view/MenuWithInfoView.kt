@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_menu_with_info.view.*
+import ua.brander.meetingroom.extensions.showError
 
 class MenuWithInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -102,7 +103,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun setError(message: String) {
-        view_menu_field_dropdown.setError(message, null)
+        view_menu_input_layout.showError(message)
     }
 
     fun hideError() {

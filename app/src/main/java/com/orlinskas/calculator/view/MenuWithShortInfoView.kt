@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_menu_with_short_info.view.*
+import ua.brander.meetingroom.extensions.showError
 
 class MenuWithShortInfoView @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
@@ -99,7 +100,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun setError(message: String) {
-        view_menu_short_field_dropdown.error = message
+        view_menu_short_input_layout.showError(message)
     }
 
     fun hideError() {
