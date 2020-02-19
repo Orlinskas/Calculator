@@ -82,5 +82,13 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     fun getValue(): String {
         return view_field_input_field.text.toString()
     }
+
+    fun setError(message: String) {
+        view_field_input_layout.error = message
+    }
+
+    fun hideError() {
+        view_field_input_layout.error = null
+    }
 }
 

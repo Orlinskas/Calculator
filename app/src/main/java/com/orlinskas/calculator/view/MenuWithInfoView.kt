@@ -55,8 +55,9 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         }
     }
 
-    fun <T> setValues(list: List<T>) {
-        val adapter = ArrayAdapter<T>(context, R.layout.row_dropdown_menu, list)
+    fun setValues(list: List<String>) {
+        values = list
+        val adapter = ArrayAdapter<String>(context, R.layout.row_dropdown_menu, values)
         view_menu_field_dropdown.setAdapter(adapter)
     }
 
@@ -92,8 +93,20 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         tooltip.dismiss()
     }
 
-    fun getValue(): String {
+    fun getSelectedItem(): String {
         return view_menu_field_dropdown.text.toString()
+    }
+
+    fun getValue(): List<String> {
+        return values
+    }
+
+    fun setError(message: String) {
+        view_menu_field_dropdown.error = message
+    }
+
+    fun hideError() {
+        view_menu_field_dropdown.error = null
     }
 }
 

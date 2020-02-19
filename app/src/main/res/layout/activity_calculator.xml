@@ -7,7 +7,7 @@
     android:id="@+id/activity_calculator_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".presentation.main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_calculator_container"
@@ -18,11 +18,10 @@
             android:id="@+id/info_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/btn_info"
+            android:layout_marginEnd="16dp"
             android:background="?android:attr/selectableItemBackground"
+            android:text="@string/btn_info"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -152,7 +151,7 @@
             android:entries="@array/regulation"/>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/go_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

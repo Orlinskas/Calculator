@@ -1,4 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppSplashTheme" parent="baseDarkTheme">
+        <item name="android:windowBackground">@drawable/splash_image</item>
+    </style>
+
+    <style name="baseDarkTheme" parent="AppTheme">
+        <item name="android:statusBarColor" tools:targetApi="m">@color/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
