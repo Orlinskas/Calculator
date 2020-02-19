@@ -41,11 +41,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         go_btn.setOnClickListener{
-            if(isValid()) {
+            //if(isValid()) {
                 val request = buildRequest()
 
                 viewModel.calculate(request)
-            }
+           // }
 
         }
     }

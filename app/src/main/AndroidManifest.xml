@@ -20,7 +20,7 @@
         android:hardwareAccelerated="false">
 
         <activity
-            android:name="ua.brander.meetingroom.presentation.splash.SplashActivity"
+            android:name=".presentation.splash.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppSplashTheme"
             tools:ignore="LockedOrientationActivity">
