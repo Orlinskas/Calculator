@@ -2,7 +2,11 @@ package com.orlinskas.calculator.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.orlinskas.calculator.R
+import com.orlinskas.calculator.model.CalculatorRequest
+import com.orlinskas.calculator.model.Form
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -30,68 +34,91 @@ class MainActivity : AppCompatActivity() {
             bottomSheetDialogFragment.show(supportFragmentManager, "bottomSheet")
         }
 
+        viewModel.failure.observe(this, Observer {
+            it?.let {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
+
         go_btn.setOnClickListener{
-            var isValidData = true
+            if(isValid()) {
+                val request = buildRequest()
 
-            height_field.apply {
-                isValidData = if(viewModel.checkValidDistance(this.getValue())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Не правильна довжина приміщення")
-                    false
-                }
+                viewModel.calculate(request)
             }
 
-            weight_field.apply {
-                isValidData = if(viewModel.checkValidDistance(this.getValue())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Не правильна ширина приміщення")
-                    false
-                }
-            }
-
-            step_field.apply {
-                isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Виберіть відстань")
-                    false
-                }
-            }
-
-            collector_distance_field.apply {
-                isValidData = if(viewModel.checkValidDistance(this.getValue())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Не правильна відстань до колектора")
-                    false
-                }
-            }
-
-            isolation_field.apply {
-                isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Виберіть тип ізоляції")
-                    false
-                }
-            }
-
-            regulation_field.apply {
-                isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
-                    this.hideError()
-                    true
-                } else {
-                    this.setError("Виберіть тип регулювання")
-                    false
-                }
-            }
         }
     }
+
+    private fun isValid(): Boolean {
+        var isValidData: Boolean
+
+        height_field.apply {
+            isValidData = if(viewModel.checkValidDistance(this.getValue())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Не правильна довжина приміщення")
+                false
+            }
+        }
+
+        weight_field.apply {
+            isValidData = if(viewModel.checkValidDistance(this.getValue())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Не правильна ширина приміщення")
+                false
+            }
+        }
+
+        step_field.apply {
+            isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Виберіть відстань")
+                false
+            }
+        }
+
+        collector_distance_field.apply {
+            isValidData = if(viewModel.checkValidDistance(this.getValue())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Не правильна відстань до колектора")
+                false
+            }
+        }
+
+        isolation_field.apply {
+            isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Виберіть тип ізоляції")
+                false
+            }
+        }
+
+        regulation_field.apply {
+            isValidData = if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
+                this.hideError()
+                true
+            } else {
+                this.setError("Виберіть тип регулювання")
+                false
+            }
+        }
+
+        return isValidData
+    }
+
+    private fun buildRequest(): CalculatorRequest {
+        val form = Form("3", "opt", "4", "true", "10", "4")
+        return CalculatorRequest(type = "base", form = form)
+    }
+
 }

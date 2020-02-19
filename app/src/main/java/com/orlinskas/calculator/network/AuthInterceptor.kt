@@ -1,4 +1,4 @@
-package ua.brander.meetingroom.data.network
+package com.orlinskas.calculator.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

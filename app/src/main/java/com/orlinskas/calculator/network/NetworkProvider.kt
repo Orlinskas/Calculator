@@ -1,4 +1,4 @@
-package ua.brander.meetingroom.data.network
+package com.orlinskas.calculator.network
 
 import com.orlinskas.calculator.BASE_URL
 import okhttp3.OkHttpClient

@@ -1,20 +1,20 @@
 package com.orlinskas.calculator.di
 
 import com.orlinskas.calculator.interactor.SimpleCalculatorUseCase
+import com.orlinskas.calculator.network.AuthInterceptor
+import com.orlinskas.calculator.network.provideApi
+import com.orlinskas.calculator.network.provideClient
+import com.orlinskas.calculator.network.provideRetrofit
 import com.orlinskas.calculator.presentation.main.MainViewModel
+import com.orlinskas.calculator.presentation.splash.SplashViewModel
 import com.orlinskas.calculator.repository.SimpleCalculatorRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ua.brander.core.platform.NetworkHandler
-import ua.brander.meetingroom.data.network.AuthInterceptor
-import ua.brander.meetingroom.data.network.provideApi
-import ua.brander.meetingroom.data.network.provideClient
-import ua.brander.meetingroom.data.network.provideRetrofit
-import ua.brander.meetingroom.presentation.splash.SplashViewModel
 
 val viewModelModule = module {
-    viewModel { MainViewModel(androidContext()) }
+    viewModel { MainViewModel(androidContext(), get()) }
     viewModel { SplashViewModel() }
 }
 val netWorkModule = module {
