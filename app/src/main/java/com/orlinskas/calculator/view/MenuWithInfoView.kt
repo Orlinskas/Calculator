@@ -102,7 +102,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     }
 
     fun setError(message: String) {
-        view_menu_field_dropdown.error = message
+        view_menu_field_dropdown.setError(message, null)
     }
 
     fun hideError() {

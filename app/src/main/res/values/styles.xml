@@ -25,7 +25,7 @@
         <item name="errorTextColor">@color/errorColor</item>
     </style>
 
-    <style name="TextLayoutWithMenuStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+    <style name="TextLayoutWithMenuStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="boxStrokeColor">@color/colorPrimary</item>
