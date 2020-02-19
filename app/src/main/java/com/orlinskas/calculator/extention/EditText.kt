@@ -1,13 +1,9 @@
-package ua.brander.meetingroom.extensions
+package com.orlinskas.calculator.extention
 
-import android.text.Spannable
-import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.widget.EditText
-import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputLayout
-import com.orlinskas.calculator.R
 import java.util.regex.Pattern
 
 fun EditText.setSelectionChangedListener(runAction: () -> Unit) {
@@ -24,7 +20,6 @@ fun EditText.setSelectionChangedListener(runAction: () -> Unit) {
 fun TextInputLayout.showError(errorMessage: String?) {
     this.isErrorEnabled = true
     this.error = errorMessage
-    this.errorIconDrawable = null
 }
 
 fun TextInputLayout.isValid(pattern: Pattern, errorMessage: String): Boolean =

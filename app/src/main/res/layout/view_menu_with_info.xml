@@ -48,7 +48,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="24dp"
         app:boxBackgroundColor="@color/field_background"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopStart="8dp"
@@ -62,15 +62,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/view_menu_measure_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_menu_info_text"
-        app:errorEnabled="true">
+        app:layout_constraintTop_toBottomOf="@id/view_menu_info_text">
 
         <AutoCompleteTextView
             android:id="@+id/view_menu_field_dropdown"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:editable="false"
-            android:focusable="true"/>
+            android:focusable="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
