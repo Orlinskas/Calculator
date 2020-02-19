@@ -8,7 +8,7 @@ data class CalculatorResultModel(
     val calculation_result: CalculationResult?,
     val input_values: InputValues?,
     val products: List<Product>?,
-    val ru: Ru?,
+    val ru: Localizations?,
     val total_sum: String?,
-    val ua: Ua?
+    val ua: Localizations?
 ): Parcelable

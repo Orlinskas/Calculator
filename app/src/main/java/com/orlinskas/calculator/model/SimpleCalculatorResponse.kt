@@ -4,19 +4,23 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import ua.brander.core.simple.repository.Convertable
 
-data class CalculatorResponse(
-    val calculation_result: CalculationResult,
-    val input_values: InputValues,
-    val products: List<Product>,
-    val ru: Ru,
-    val total_sum: String,
-    val ua: Ua
+data class SimpleCalculatorResponse(
+    val names: RowNames,
+    val data: RowsData
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(calculation_result, input_values, products, ru, total_sum, ua)
+        return CalculatorResultModel(data.calculation_result, data.input_values, data.products, names.map["ru"], data.total_sum, names.map["ua"])
     }
 }
+
+@Parcelize
+data class RowsData(
+    val calculation_result: CalculationResult,
+    val input_values: InputValues,
+    val products: List<Product>,
+    val total_sum: String
+): Parcelable
 
 @Parcelize
 data class CalculationResult(
@@ -44,25 +48,12 @@ data class Product(
 ): Parcelable
 
 @Parcelize
-data class Ru(
-    val count: String,
-    val distance: String,
-    val insulation: String,
-    val length: String,
-    val name: String,
-    val price: String,
-    val quantity_contour: String,
-    val regulation: String,
-    val sku: String,
-    val step: String,
-    val sum: String,
-    val total_sum: String,
-    val tube_length: String,
-    val width: String
+data class RowNames(
+    val map: Map<String, Localizations>
 ): Parcelable
 
 @Parcelize
-data class Ua(
+data class Localizations(
     val count: String,
     val distance: String,
     val insulation: String,

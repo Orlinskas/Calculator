@@ -74,4 +74,7 @@ dependencies {
 
     //ui
     implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
+
+    //profiler
+    implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.3'
 }

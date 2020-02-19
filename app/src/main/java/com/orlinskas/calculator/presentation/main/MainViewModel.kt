@@ -22,8 +22,8 @@ class MainViewModel(val context: Context, private val simpleCalculatorUseCase: S
         }
     }
 
-    private fun processCalculatorData(calculatorResultModel: CalculatorResultModel) {
-        val result = calculatorResultModel
+    private fun processCalculatorData(resultList: List<CalculatorResultModel>) {
+        val result = resultList.get(0)
         val value = result.total_sum
     }
 }
