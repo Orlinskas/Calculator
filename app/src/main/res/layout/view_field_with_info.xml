@@ -58,7 +58,7 @@
         app:layout_constraintEnd_toStartOf="@id/view_field_measure_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_field_info_text"
-        app:errorEnabled="true">
+        app:errorTextColor="@color/errorColor">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/view_field_input_field"

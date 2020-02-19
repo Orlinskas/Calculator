@@ -1,9 +1,8 @@
-package ua.brander.meetingroom.presentation.splash
+package com.orlinskas.calculator.presentation.splash
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.orlinskas.calculator.presentation.main.MainActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 

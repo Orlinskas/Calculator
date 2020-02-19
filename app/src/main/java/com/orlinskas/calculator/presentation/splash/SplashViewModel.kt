@@ -1,7 +1,6 @@
-package ua.brander.meetingroom.presentation.splash
+package com.orlinskas.calculator.presentation.splash
 
 import androidx.lifecycle.MutableLiveData
-import ua.brander.core.interactor.UseCase
 import ua.brander.core.viewmodel.BaseViewModel
 
 class SplashViewModel() : BaseViewModel() { // do use case ander Any
