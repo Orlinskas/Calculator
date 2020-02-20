@@ -3,21 +3,43 @@ package com.orlinskas.calculator.model
 import ua.brander.core.simple.repository.Convertable
 import java.io.Serializable
 
-data class SimpleCalculatorResponse(
-    val names: RowNames,
-    val data: RowsData
+data class CalculatorResponse(
+    val dictionary: Dictionary,
+    val result: Result
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(data.calculation_result, data.input_values, data.products, names.ru, data.total_sum, names.ua)
+        return CalculatorResultModel(result.calculation_result, result.input_values, result.products, dictionary.ru, result.total_sum, dictionary.ua)
     }
 }
 
-data class RowsData(
+data class Dictionary(
+    val ru: Location,
+    val ua: Location
+): Serializable
+
+data class Result(
     val calculation_result: CalculationResult,
     val input_values: InputValues,
     val products: List<Product>,
     val total_sum: String
+): Serializable
+
+data class Location(
+    val count: String,
+    val distance: String,
+    val insulation: String,
+    val length: String,
+    val name: String,
+    val price: String,
+    val quantity_contour: String,
+    val regulation: String,
+    val sku: String,
+    val step: String,
+    val sum: String,
+    val total_sum: String,
+    val tube_length: String,
+    val width: String
 ): Serializable
 
 data class CalculationResult(
@@ -36,30 +58,9 @@ data class InputValues(
 
 data class Product(
     val count: Int,
+    val image: String,
     val name: String,
     val price: String,
     val sku: String,
     val sum: String
-): Serializable
-
-data class RowNames(
-    val ru: Localizations,
-    val ua: Localizations
-): Serializable
-
-data class Localizations(
-    val count: String,
-    val distance: String,
-    val insulation: String,
-    val length: String,
-    val name: String,
-    val price: String,
-    val quantity_contour: String,
-    val regulation: String,
-    val sku: String,
-    val step: String,
-    val sum: String,
-    val total_sum: String,
-    val tube_length: String,
-    val width: String
 ): Serializable

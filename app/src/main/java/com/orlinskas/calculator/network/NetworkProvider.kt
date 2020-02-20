@@ -20,8 +20,8 @@ fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
 fun provideClient(authInterceptor: AuthInterceptor): OkHttpClient {
 
     return OkHttpClient.Builder().apply {
-        readTimeout(20, TimeUnit.SECONDS)
-        connectTimeout(20, TimeUnit.SECONDS)
+        readTimeout(10, TimeUnit.SECONDS)
+        connectTimeout(10, TimeUnit.SECONDS)
     }.apply {
         addInterceptor(authInterceptor)
         addNetworkInterceptor(HttpLoggingInterceptor())

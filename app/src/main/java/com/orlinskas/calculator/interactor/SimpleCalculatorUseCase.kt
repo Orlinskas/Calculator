@@ -8,9 +8,9 @@ import ua.brander.core.functional.Either
 import ua.brander.core.interactor.UseCase
 
 class SimpleCalculatorUseCase(private val simpleCalculatorRepository: SimpleCalculatorRepository) :
-    UseCase<List<CalculatorResultModel>, CalculatorRequest>() {
+    UseCase<CalculatorResultModel, CalculatorRequest>() {
 
-    override suspend fun run(params: CalculatorRequest): Either<Failure, List<CalculatorResultModel>> {
+    override suspend fun run(params: CalculatorRequest): Either<Failure, CalculatorResultModel> {
         return simpleCalculatorRepository.calculate(params)
     }
 

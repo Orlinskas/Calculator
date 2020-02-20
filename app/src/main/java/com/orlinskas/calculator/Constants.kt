@@ -5,9 +5,10 @@ import com.orlinskas.calculator.model.CalculatorResultModel
 import com.orlinskas.calculator.model.InputValues
 import com.orlinskas.calculator.model.Product
 
-class Constants
-
 const val BASE_URL = "https://icma.com.ua/api/"
+const val HEADER_TYPE = "Content-type"
+const val HEADER_ACCEPT = "Accept"
+const val HEADER_VALUE = "application/json"
 
 fun getDefaultSceleton(): CalculatorResultModel {
     val products = listOf(
@@ -24,8 +25,6 @@ fun getDefaultSceleton(): CalculatorResultModel {
 
     return CalculatorResultModel(result, values, products, null, "20 546.00", null)
 }
-
-
 
 enum class ApiResponse(val code: Int) {
     OK(200),
