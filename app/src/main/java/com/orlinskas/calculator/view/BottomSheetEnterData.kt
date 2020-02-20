@@ -26,7 +26,7 @@ class BottomSheetEnterData : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        isRegulation.isSelected = resultModel.input_values?.regulation ?: false
+        isRegulation.isSelected = true
         isIsolation.isSelected = resultModel.input_values?.insulation ?: false
     }
 }

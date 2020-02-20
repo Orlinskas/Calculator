@@ -53,6 +53,8 @@ class ResultActivity : AppCompatActivity() {
         val magistralLength = resultModel.calculation_result?.tube_length.toString() + " м."
         lenght_magistral.text = magistralLength
         contur_count.text = resultModel.calculation_result?.quantity_contour.toString()
+
+        price.text = resultModel.total_sum
     }
 
     private fun initProductRecycleView(products: List<Product>) {
