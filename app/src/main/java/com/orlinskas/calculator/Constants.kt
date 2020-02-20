@@ -1,12 +1,31 @@
 package com.orlinskas.calculator
 
+import com.orlinskas.calculator.model.CalculationResult
 import com.orlinskas.calculator.model.CalculatorResultModel
+import com.orlinskas.calculator.model.InputValues
+import com.orlinskas.calculator.model.Product
 
 class Constants
 
 const val BASE_URL = "https://icma.com.ua/api/"
 
-public val calculatorSceleton = CalculatorResultModel(null, null, null, null, null, null)
+fun getDefaultSceleton(): CalculatorResultModel {
+    val products = listOf(
+        Product(4, "Євроконус Icma 16х2 3/4\" №101", "62.00", "5250", "248.00"),
+        Product(107, "Труба GOLD-PEX Icma 16х2мм 200 м №P198", "25.00", "5306", "2675.00"),
+        Product(1, "Насос Grundfos Icma 25/40-60 №P326", "3792.00", "15560", "3792.00"),
+        Product(14, "Демпферна стрічка 8 мм (50м.п.)", "4.00", "8836", "400.00"),
+        Product(1, "Шафа колекторна 480x580х110 (внутрішній) №1 \"Україна\"", "525.00", "15371", "525.00")
+    )
+
+    val result = CalculationResult(2, 107)
+
+    val values = InputValues(2, false, 2, true, 10, 5)
+
+    return CalculatorResultModel(result, values, products, null, "20 546.00", null)
+}
+
+
 
 enum class ApiResponse(val code: Int) {
     OK(200),
@@ -19,3 +38,5 @@ enum class ApiResponse(val code: Int) {
     CONFLICT_TIME(409),
     LOCAL(999)
 }
+
+const val SERIALIZABLE_CALCULATOR_RESULT_MODEL = "resultModel"

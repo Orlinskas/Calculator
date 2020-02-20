@@ -10,5 +10,5 @@ import retrofit2.http.POST
 
 interface Api {
     @POST("calculator")
-    suspend fun simpleCalculator(@Body calculatorRequest: CalculatorRequest): Response<ResponseData<SimpleCalculatorResponse>>
+    suspend fun simpleCalculator(@Body calculatorRequest: CalculatorRequest): List<SimpleCalculatorResponse>
 }

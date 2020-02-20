@@ -1,8 +1,7 @@
 package com.orlinskas.calculator.model
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import ua.brander.core.simple.repository.Convertable
+import java.io.Serializable
 
 data class SimpleCalculatorResponse(
     val names: RowNames,
@@ -10,25 +9,22 @@ data class SimpleCalculatorResponse(
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(data.calculation_result, data.input_values, data.products, names.map["ru"], data.total_sum, names.map["ua"])
+        return CalculatorResultModel(data.calculation_result, data.input_values, data.products, names.ru, data.total_sum, names.ua)
     }
 }
 
-@Parcelize
 data class RowsData(
     val calculation_result: CalculationResult,
     val input_values: InputValues,
     val products: List<Product>,
     val total_sum: String
-): Parcelable
+): Serializable
 
-@Parcelize
 data class CalculationResult(
     val quantity_contour: Int,
     val tube_length: Int
-): Parcelable
+): Serializable
 
-@Parcelize
 data class InputValues(
     val distance: Int,
     val insulation: Boolean,
@@ -36,23 +32,21 @@ data class InputValues(
     val regulation: Boolean,
     val step: Int,
     val width: Int
-): Parcelable
+): Serializable
 
-@Parcelize
 data class Product(
     val count: Int,
     val name: String,
     val price: String,
     val sku: String,
     val sum: String
-): Parcelable
+): Serializable
 
-@Parcelize
 data class RowNames(
-    val map: Map<String, Localizations>
-): Parcelable
+    val ru: Localizations,
+    val ua: Localizations
+): Serializable
 
-@Parcelize
 data class Localizations(
     val count: String,
     val distance: String,
@@ -68,4 +62,4 @@ data class Localizations(
     val total_sum: String,
     val tube_length: String,
     val width: String
-): Parcelable
+): Serializable

@@ -1,15 +1,23 @@
 package com.orlinskas.calculator.presentation.main
 
 import android.content.Context
+import androidx.lifecycle.MutableLiveData
 import com.orlinskas.calculator.interactor.SimpleCalculatorUseCase
 import com.orlinskas.calculator.model.CalculatorRequest
 import com.orlinskas.calculator.model.CalculatorResultModel
 import ua.brander.core.viewmodel.BaseViewModel
 
 class MainViewModel(val context: Context, private val simpleCalculatorUseCase: SimpleCalculatorUseCase) : BaseViewModel() {
+    val isLoading: MutableLiveData<Boolean> = MutableLiveData()
+    val result: MutableLiveData<CalculatorResultModel> = MutableLiveData()
 
-    fun checkValidDistance(distanse: Any?): Boolean {
-        return distanse != null && distanse is Int && distanse < 999 && distanse > 0
+    fun checkValidDistance(distanse: String): Boolean {
+        return try {
+            val int = distanse.toInt()
+            int in 1..999
+        } catch (e: Exception) {
+            false
+        }
     }
 
     fun <T> checkValidArray(element: Any?, array: Array<T>): Boolean {
@@ -23,7 +31,6 @@ class MainViewModel(val context: Context, private val simpleCalculatorUseCase: S
     }
 
     private fun processCalculatorData(resultList: List<CalculatorResultModel>) {
-        val result = resultList.get(0)
-        val value = result.total_sum
+        result.value = resultList[0]
     }
 }

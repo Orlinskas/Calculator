@@ -1,3 +1,3 @@
 package com.orlinskas.calculator.model.container
 
-data class ResponseData<T>(val code:Int, val message:String, val data: T)
+data class ResponseData<T>(val data: T)
