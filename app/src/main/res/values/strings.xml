@@ -37,22 +37,24 @@
     <string name="measure_metr">м</string>
     <string name="measure_sant">см</string>
 
+    <string name="optimal">Оптимальна</string>
+    <string name="econom">Економ</string>
+    <string name="regulation_yes">Так</string>
+    <string name="regilation_no">Нi</string>
+    <string name="network_error">Увімкніть інтернет</string>
+    <string name="height_error">Не правильна довжина приміщення</string>
+    <string name="weight_error">Не правильна ширина приміщення</string>
+    <string name="step_error">Виберіть відстань</string>
+    <string name="collector_error">Не правильна відстань до колектора</string>
+    <string name="isolation_error">Виберіть тип ізоляції</string>
+    <string name="regulation_error">Виберіть тип регулювання</string>
+
     <string-array name="steps">
         <item>10</item>
         <item>15</item>
         <item>20</item>
         <item>25</item>
         <item>30</item>
-    </string-array>
-
-    <string-array name="isolaion">
-        <item>Оптимальна</item>
-        <item>Економ</item>
-    </string-array>
-
-    <string-array name="regulation">
-        <item>Так</item>
-        <item>Нi</item>
     </string-array>
 
 </resources>

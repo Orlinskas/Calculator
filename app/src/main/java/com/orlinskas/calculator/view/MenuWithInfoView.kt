@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import android.widget.RelativeLayout
 import androidx.core.content.ContextCompat
 import com.orlinskas.calculator.R
-import com.orlinskas.calculator.extention.showError
 import io.github.douglasjunior.androidSimpleTooltip.SimpleTooltip
 import kotlinx.android.synthetic.main.view_menu_with_info.view.*
 
@@ -105,13 +104,15 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
     fun setError(message: String) {
         view_menu_input_layout.apply {
             isErrorEnabled = true
-            error = message
+            error = ""
         }
+        error_field.text = message
     }
 
     fun hideError() {
         view_menu_input_layout.isErrorEnabled = false
         view_menu_input_layout.error = null
+        error_field.text = ""
     }
 }
 

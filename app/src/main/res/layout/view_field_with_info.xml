@@ -48,17 +48,15 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginBottom="8dp"
         app:boxBackgroundColor="@color/field_background"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopStart="8dp"
+        app:errorTextColor="@color/errorColor"
         app:hintAnimationEnabled="false"
         app:hintEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/view_field_measure_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/view_field_info_text"
-        app:errorTextColor="@color/errorColor">
+        app:layout_constraintTop_toBottomOf="@id/view_field_info_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/view_field_input_field"
@@ -98,6 +96,18 @@
             android:textAlignment="center" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/error_field"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:textColor="@color/errorColor"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/view_field_measure_layout"
+        app:layout_constraintStart_toStartOf="@+id/view_field_input_layout"
+        app:layout_constraintTop_toBottomOf="@+id/view_field_input_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

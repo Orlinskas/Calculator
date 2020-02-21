@@ -15,13 +15,13 @@ class SimpleCalculatorRepository(
 ): Repository<CalculatorResponse, CalculatorResultModel> {
 
     override fun updateOrStoreLocally(result: Any?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        //
     }
 
     suspend fun calculate(params: CalculatorRequest): Either<Failure, CalculatorResultModel> {
         return if (networkHandler.isConnected) {
             val defaultData = getDefaultSceleton()
-            try {
+            return try {
                 request(api.simpleCalculator(params), defaultData)
             } catch (e: Exception) {
                 Either.Left(Failure.ServerErrorWithDefaultData(Repository.NETWORK_NOT_AVAILABLE_ERROR_CODE, e.message.toString(), defaultData))

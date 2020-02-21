@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import com.orlinskas.calculator.ApiResponse
+import com.orlinskas.calculator.BASE_REQUEST
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
 import com.orlinskas.calculator.model.CalculatorRequest
@@ -15,6 +17,7 @@ import com.orlinskas.calculator.presentation.result.ResultActivity
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import ua.brander.core.exception.Failure
 import ua.brander.meetingroom.extensions.hide
 import ua.brander.meetingroom.extensions.show
 
@@ -31,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         hideProgress()
 
         steps = resources.getTextArray(R.array.steps)
-        isolation = resources.getTextArray(R.array.isolaion)
-        regulation = resources.getTextArray(R.array.regulation)
+        isolation = arrayOf(viewModel.OPTIMAL, viewModel.ECONOM)
+        regulation = arrayOf(viewModel.REGULATION_YES, viewModel.REGULATION_NO)
 
         step_field.setValues(steps.map { it.toString() })
         isolation_field.setValues(isolation.map { it.toString() })
@@ -48,18 +51,59 @@ class MainActivity : AppCompatActivity() {
             val request = buildRequest()
             viewModel.calculate(request)
             }
-
         }
 
         viewModel.failure.observe(this, Observer {
-            it?.let {
-                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            it?.let { failure ->
+                if(failure is Failure.ServerErrorWithDefaultData<*>) {
+
+                    if(failure.code == ApiResponse.INVALID_INPUT_WITH_FIELD.code) {
+                        val pair = failure.defaultData as Pair<String, String>
+                        setErrorOnField(pair.first)
+                        val message = buildMessage(pair)
+
+                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(applicationContext, failure.message, Toast.LENGTH_LONG).show()
+                    }
+                }
+                if(failure is Failure.NetworkConnection) {
+                    Toast.makeText(applicationContext,  getString(R.string.network_error) , Toast.LENGTH_SHORT).show()
+                }
             }
+            hideProgress()
         })
 
         viewModel.result.observe(this, Observer {
             showResult(it)
         })
+    }
+
+    private fun buildMessage(pair: Pair<String, String>): String {
+
+        val fieldName = when(pair.first) {
+            "form.length" -> "\"" + getString(R.string.wall_height) + "\""
+            "form.width" -> "\"" + getString(R.string.wall_weight) + "\""
+            "form.step" -> "\"" + getString(R.string.field_step_long) + "\""
+            "form.distance" -> "\"" + getString(R.string.field_collector_distance) + "\""
+            "form.insulation" -> "\"" + getString(R.string.field_isolation) + "\""
+            "form.regulation" -> "\"" + getString(R.string.field_regulation) + "\""
+            else -> "на екрані"
+        }
+
+        return pair.second.replace(pair.first, fieldName)
+    }
+
+    private fun setErrorOnField(fieldCode: String) {
+        when(fieldCode) {
+            "form.length" -> height_field.setError(getString(R.string.height_error))
+            "form.width" -> weight_field.setError(getString(R.string.height_error))
+            "form.step" -> step_field.setError(getString(R.string.step_error))
+            "form.distance" -> collector_distance_field.setError(getString(R.string.collector_error))
+            "form.insulation" -> isolation_field.setError(getString(R.string.isolation_error))
+            "form.regulation" -> regulation_field.setError(getString(R.string.regulation_error))
+            else -> return
+        }
     }
 
     private fun isValid(): Boolean {
@@ -69,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidDistance(this.getValue())) {
                 this.hideError()
             } else {
-                this.setError("Не правильна довжина приміщення")
+                this.setError(getString(R.string.height_error))
                 isValidData = false
             }
         }
@@ -78,7 +122,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidDistance(this.getValue())) {
                 this.hideError()
             } else {
-                this.setError("Не правильна ширина приміщення")
+                this.setError(getString(R.string.weight_error))
                 isValidData = false
             }
         }
@@ -87,7 +131,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
                 this.hideError()
             } else {
-                this.setError("Виберіть відстань")
+                this.setError(getString(R.string.step_error))
                 isValidData = false
             }
         }
@@ -96,7 +140,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidDistance(this.getValue())) {
                 this.hideError()
             } else {
-                this.setError("Не правильна відстань до колектора")
+                this.setError(getString(R.string.collector_error))
                 isValidData = false
             }
         }
@@ -105,7 +149,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
                 this.hideError()
             } else {
-                this.setError("Виберіть тип ізоляції")
+                this.setError(getString(R.string.isolation_error))
                 isValidData = false
             }
         }
@@ -114,7 +158,7 @@ class MainActivity : AppCompatActivity() {
             if(viewModel.checkValidArray(this.getSelectedItem(), this.getValue().toTypedArray())) {
                 this.hideError()
             } else {
-                this.setError("Виберіть тип регулювання")
+                this.setError(getString(R.string.regulation_error))
                 isValidData = false
             }
         }
@@ -123,8 +167,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun buildRequest(): CalculatorRequest {
-        val form = Form("3", "opt", "4", "true", "10", "4")
-        return CalculatorRequest(type = "base", form = form)
+        val form = Form(
+            collector_distance_field.getValue(),
+            viewModel.getIsolation(isolation_field.getSelectedItem()),
+            height_field.getValue(),
+            viewModel.getRegulation(regulation_field.getSelectedItem()),
+            step_field.getSelectedItem(), weight_field.getValue()
+        )
+
+        return CalculatorRequest(type = BASE_REQUEST, form = form)
     }
 
     private fun showProgress() {

@@ -4,12 +4,13 @@ import ua.brander.core.simple.repository.Convertable
 import java.io.Serializable
 
 data class CalculatorResponse(
-    val dictionary: Dictionary,
-    val result: Result
+    val dictionary: Dictionary? = null,
+    val result: Result ? = null
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(result.calculation_result, result.input_values, result.products, dictionary.ru, result.total_sum, dictionary.ua)
+        return CalculatorResultModel(result?.calculation_result, result?.input_values,
+            result?.products, dictionary?.ru, result?.total_sum, dictionary?.ua)
     }
 }
 
@@ -63,4 +64,8 @@ data class Product(
     val price: String,
     val sku: String,
     val sum: String
+): Serializable
+
+data class Errors(
+    val errors: List<String>
 ): Serializable

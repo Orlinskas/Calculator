@@ -9,7 +9,7 @@ data class Form(
     val distance: String,
     val insulation: String,
     val length: String,
-    val regulation: String,
+    val regulation: Boolean,
     val step: String,
     val width: String
 )

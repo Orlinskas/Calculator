@@ -1,11 +1,11 @@
 package com.orlinskas.calculator.repository
 
 import com.orlinskas.calculator.ApiResponse
+import org.json.JSONObject
 import retrofit2.Response
 import ua.brander.core.exception.Failure
 import ua.brander.core.functional.Either
 import ua.brander.core.simple.repository.Convertable
-import ua.brander.meetingroom.extensions.getMessage
 
 interface Repository<T : Convertable<R>, R> {
 
@@ -50,30 +50,37 @@ interface Repository<T : Convertable<R>, R> {
                     updateOrStoreLocally(result)
                     return Either.Right(result)
                 }
-                ApiResponse.INVALID_INPUT.code, ApiResponse.INVALID_DATA.code, ApiResponse.CONFLICT_TIME.code -> {
-                    return Either.Left(
-                        Failure.ServerErrorWithDescription(
-                            response.code(),
-                            response.errorBody()?.getMessage()
-                        )
-                    )
-                }
-                ApiResponse.INVALID_TOKEN.code, ApiResponse.DEACTIVATED.code -> {
-                    return Either.Left(
-                        Failure.ServerErrorWithDescription(
-                            response.code(),
-                            response.errorBody()?.getMessage()
-                        )
-                    )
+                ApiResponse.INVALID_INPUT.code -> {
+                    var message = "CantParseError"
+
+                    response.errorBody()?.let { errorBody ->
+                        val jObjError = JSONObject(errorBody.string())
+                        message = jObjError.getString("message")
+
+                        try {
+                            val key = jObjError.getJSONObject("errors").keys().next()
+
+                            if(!key.isNullOrEmpty()) {
+                                val firstError = jObjError.getJSONObject("errors").getJSONArray(key).getString(0)
+
+                                if(!firstError.isNullOrEmpty()) {
+                                    return Either.Left(Failure.ServerErrorWithDefaultData(ApiResponse.INVALID_INPUT_WITH_FIELD.code, message, Pair(key, firstError)))
+                                }
+                            }
+                        } catch (e: Exception) { }
+                    }
+
+                    return Either.Left(Failure.ServerErrorWithDefaultData(ApiResponse.INVALID_INPUT.code, message, default))
                 }
                 else -> {
-                    return Either.Left(Failure.ServerError())
+                    val message = "Unchecked error, with code ${response.code()}"
+                    return Either.Left(Failure.ServerErrorWithDefaultData(0, message, default))
                 }
             }
         } catch (exception: Throwable) {
             return Either.Left(
                 Failure.ServerErrorWithDefaultData(
-                    ApiResponse.NOT_FOUND.code,
+                    NETWORK_NOT_AVAILABLE_ERROR_CODE,
                     exception.toString(),
                     default
                 )

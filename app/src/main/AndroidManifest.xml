@@ -35,7 +35,9 @@
 
         <activity
             android:name=".presentation.main.MainActivity"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
         </activity>
 
         <activity

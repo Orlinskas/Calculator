@@ -132,8 +132,7 @@
 
             app:menu_with_short_info_help_text="@string/field_isolation_description_optimal"
             app:menu_with_short_info_hint="@string/hint_text"
-            app:menu_with_short_info_title_text="@string/field_isolation"
-            android:entries="@array/isolaion"/>
+            app:menu_with_short_info_title_text="@string/field_isolation" />
 
         <com.orlinskas.calculator.view.MenuWithShortInfoView
             android:id="@+id/regulation_field"
@@ -146,8 +145,7 @@
 
             app:menu_with_short_info_help_text="@string/field_regulation_description"
             app:menu_with_short_info_hint="@string/hint_text"
-            app:menu_with_short_info_title_text="@string/field_regulation"
-            android:entries="@array/regulation"/>
+            app:menu_with_short_info_title_text="@string/field_regulation" />
 
         <Button
             android:id="@+id/go_btn"
