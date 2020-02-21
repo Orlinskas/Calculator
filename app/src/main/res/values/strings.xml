@@ -48,6 +48,10 @@
     <string name="collector_error">Не правильна відстань до колектора</string>
     <string name="isolation_error">Виберіть тип ізоляції</string>
     <string name="regulation_error">Виберіть тип регулювання</string>
+    <string name="regulation">Авторегулювання</string>
+    <string name="isolation">Ізоляція високої якості</string>
+    <string name="enter_data">Вхідні дані</string>
+    <string name="errorValue">n/a</string>
 
     <string-array name="steps">
         <item>10</item>

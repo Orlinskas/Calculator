@@ -26,6 +26,15 @@ class BottomSheetEnterData : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
+        val wallHeightValue = "${getString(R.string.wall_height)}: ${resultModel.input_values?.length ?: getString(R.string.errorValue)} м."
+        val wallWeightValue = "${getString(R.string.wall_weight)}: ${resultModel.input_values?.width ?: getString(R.string.errorValue)} м."
+        val stepValue = "${getString(R.string.field_step_long)}: ${resultModel.input_values?.step ?: getString(R.string.errorValue)} см."
+        val collectorDistanseValue = "${getString(R.string.field_collector_distance)}: ${resultModel.input_values?.distance ?: getString(R.string.errorValue)} м."
+
+        wall_height_text.text = wallHeightValue
+        wall_weight_text.text = wallWeightValue
+        step_text.text = stepValue
+        collector_text.text = collectorDistanseValue
         isRegulation.isChecked = resultModel.input_values?.regulation ?: false
         isIsolation.isChecked = resultModel.input_values?.insulation ?: false
     }

@@ -45,27 +45,76 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="Вхідні дані"
+            android:text="@string/enter_data"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logo_image_view" />
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/wall_height_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:text="@string/wall_height"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/wall_weight_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:text="@string/wall_height"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/step_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:text="@string/wall_height"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/collector_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:background="?android:attr/actionBarItemBackground"
+            android:text="@string/wall_height"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp" />
 
         <CheckBox
             android:id="@+id/isRegulation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:lineSpacingExtra="6sp"
-            android:text="Авторегулювання"
+            android:text="@string/regulation"
             android:editable="false"
             android:focusable="false"
             android:clickable="false"
@@ -78,12 +127,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
             android:layout_marginEnd="24dp"
             android:lineSpacingExtra="6sp"
             android:editable="false"
             android:focusable="false"
             android:clickable="false"
-            android:text="Ізоляція високої якості"
+            android:text="@string/isolation"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
 
