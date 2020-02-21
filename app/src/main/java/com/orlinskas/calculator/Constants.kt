@@ -22,7 +22,7 @@ fun getDefaultSceleton(): CalculatorResultModel {
 
     val result = CalculationResult(2, 107)
 
-    val values = InputValues(2, false, 2, true, 10, 5)
+    val values = InputValues(2f, false, 2f, true, 10, 5f)
 
     return CalculatorResultModel(result, values, products, null, "20 546.00", null)
 }

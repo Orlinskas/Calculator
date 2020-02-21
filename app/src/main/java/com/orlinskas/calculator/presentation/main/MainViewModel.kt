@@ -19,8 +19,8 @@ class MainViewModel(val context: Context, private val simpleCalculatorUseCase: S
 
     fun checkValidDistance(distanse: String): Boolean {
         return try {
-            val int = distanse.toInt()
-            int in 1..999
+            val int = distanse.toFloat()
+            int in 1.0..999.0
         } catch (e: Exception) {
             false
         }

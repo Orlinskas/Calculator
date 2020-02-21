@@ -49,12 +49,12 @@ data class CalculationResult(
 ): Serializable
 
 data class InputValues(
-    val distance: Int,
+    val distance: Float,
     val insulation: Boolean,
-    val length: Int,
+    val length: Float,
     val regulation: Boolean,
     val step: Int,
-    val width: Int
+    val width: Float
 ): Serializable
 
 data class Product(
