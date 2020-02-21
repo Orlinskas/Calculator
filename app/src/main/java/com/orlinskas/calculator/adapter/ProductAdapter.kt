@@ -8,19 +8,28 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.makeramen.roundedimageview.RoundedTransformationBuilder
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.model.Product
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Transformation
 import kotlinx.android.synthetic.main.row_product.view.*
 
 class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var onItemClickListener: OnProductClickListener? = null
     private var productList: ArrayList<Product> = arrayListOf()
     private val outValue = TypedValue()
+    private lateinit var transformation: Transformation
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
         //context.theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, outValue, true)
+
+        transformation = RoundedTransformationBuilder()
+            .borderColor(R.color.white)
+            .borderWidthDp(3F)
+            .oval(true)
+            .build()
     }
 
     fun setItems(list: List<Product>) {
@@ -69,7 +78,7 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
         itemHolder.apply {
             name.text = item.name
             Picasso.with(context)
-                .load(item.image).fit()
+                .load(item.image).fit().transform(transformation)
                 .placeholder(R.color.white)
                 .error(R.color.white)
                 .into(image)
