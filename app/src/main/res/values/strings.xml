@@ -52,6 +52,7 @@
     <string name="isolation">Ізоляція високої якості</string>
     <string name="enter_data">Вхідні дані</string>
     <string name="errorValue">n/a</string>
+    <string name="done">Добре</string>
 
     <string-array name="steps">
         <item>10</item>

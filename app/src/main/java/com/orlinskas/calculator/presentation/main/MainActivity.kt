@@ -16,6 +16,7 @@ import com.orlinskas.calculator.model.CalculatorResultModel
 import com.orlinskas.calculator.model.Form
 import com.orlinskas.calculator.presentation.result.ResultActivity
 import com.orlinskas.calculator.view.BottomSheetInfo
+import com.orlinskas.calculator.view.BottomSheetMessage
 import kotlinx.android.synthetic.main.activity_calculator.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import ua.brander.core.exception.Failure
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var isolation: Array<CharSequence>
     private lateinit var regulation: Array<CharSequence>
     private val bottomSheetDialogFragment = BottomSheetInfo()
+    private val bottomSheetMessageFragment = BottomSheetMessage()
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,11 +63,13 @@ class MainActivity : AppCompatActivity() {
                     if(failure.code == ApiResponse.INVALID_INPUT_WITH_FIELD.code) {
                         val pair = failure.defaultData as Pair<String, String>
                         setErrorOnField(pair.first)
-                        val message = buildMessage(pair)
 
-                        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+                        val message = buildMessage(pair)
+                        bottomSheetMessageFragment.descriptionMessage = message
+                        bottomSheetMessageFragment.show(supportFragmentManager, "messageSheet")
                     } else {
-                        Toast.makeText(applicationContext, failure.message, Toast.LENGTH_LONG).show()
+                        bottomSheetMessageFragment.descriptionMessage = failure.message ?: "Невiдома помилка"
+                        bottomSheetMessageFragment.show(supportFragmentManager, "messageSheet")
                     }
                 }
                 if(failure is Failure.NetworkConnection) {
