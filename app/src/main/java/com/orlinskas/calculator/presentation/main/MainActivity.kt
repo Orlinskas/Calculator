@@ -1,5 +1,6 @@
 package com.orlinskas.calculator.presentation.main
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -194,6 +195,18 @@ class MainActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putSerializable(SERIALIZABLE_CALCULATOR_RESULT_MODEL, result)
         intent.putExtras(bundle)
-        startActivity(intent)
+        startActivityForResult(intent, 0)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            height_field.clear()
+            weight_field.clear()
+            step_field.clear()
+            collector_distance_field.clear()
+            isolation_field.clear()
+            regulation_field.clear()
+        }
     }
 }

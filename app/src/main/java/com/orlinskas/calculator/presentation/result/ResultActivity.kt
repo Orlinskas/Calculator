@@ -1,5 +1,7 @@
 package com.orlinskas.calculator.presentation.result
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -9,6 +11,7 @@ import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
 import com.orlinskas.calculator.adapter.ProductAdapter
 import com.orlinskas.calculator.model.CalculatorResultModel
 import com.orlinskas.calculator.model.Product
+import com.orlinskas.calculator.presentation.main.MainActivity
 import com.orlinskas.calculator.view.BottomSheetEnterData
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_result.*
@@ -43,6 +46,11 @@ class ResultActivity : AppCompatActivity() {
             }
             bottomSheetDataDialogFragment.show(supportFragmentManager, "bottomSheetData")
         }
+
+        back_btn.setOnClickListener {
+            setResult(Activity.RESULT_OK)
+            finish()
+        }
     }
 
     private fun displayResult(resultModel: CalculatorResultModel) {
@@ -72,5 +80,10 @@ class ResultActivity : AppCompatActivity() {
             adapter = productAdapter
             layoutManager = LinearLayoutManager(context)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 }

@@ -109,6 +109,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         error_field.text = message
     }
 
+    fun clear() {
+        view_menu_field_dropdown.text?.clear()
+    }
+
     fun hideError() {
         view_menu_input_layout.isErrorEnabled = false
         view_menu_input_layout.error = null

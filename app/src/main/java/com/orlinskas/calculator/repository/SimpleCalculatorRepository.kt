@@ -30,5 +30,4 @@ class SimpleCalculatorRepository(
             Either.Left(Failure.NetworkConnection())
         }
     }
-
 }

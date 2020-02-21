@@ -77,4 +77,7 @@ dependencies {
 
     //profiler
     implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.3'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

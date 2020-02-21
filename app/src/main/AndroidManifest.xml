@@ -37,14 +37,15 @@
             android:name=".presentation.main.MainActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
+            tools:ignore="LockedOrientationActivity"
+            android:launchMode="singleInstance">
         </activity>
 
         <activity
             android:name=".presentation.result.ResultActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-
+            tools:ignore="LockedOrientationActivity"
+            android:launchMode="singleInstance"/>
     </application>
 
 </manifest>

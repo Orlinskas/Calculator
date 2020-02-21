@@ -91,6 +91,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         error_field.text = message
     }
 
+    fun clear() {
+        view_field_input_field.text?.clear()
+    }
+
     fun hideError() {
         view_field_input_layout.isErrorEnabled = false
         view_field_input_layout.error = null

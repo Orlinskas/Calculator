@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.model.Product
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.row_product.view.*
 
 class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -67,7 +68,12 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
 
         itemHolder.apply {
             name.text = item.name
-            //image.setImageResource(R.drawable.)
+            Picasso.with(context)
+                .load(item.image).fit()
+                .placeholder(R.color.white)
+                .error(R.color.white)
+                .into(image)
+
             countValue.text = item.count.toString()
             priceItem.text = item.price
             overPrice.text = item.sum

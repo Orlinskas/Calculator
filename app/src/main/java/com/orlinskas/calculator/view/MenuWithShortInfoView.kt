@@ -106,6 +106,10 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         error_field.text = message
     }
 
+    fun clear() {
+        view_menu_short_field_dropdown.text?.clear()
+    }
+
     fun hideError() {
         view_menu_short_field_dropdown.error = null
         error_field.text = ""
