@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/parent"
     android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:maxLines="2"
-            android:text="Труба GOLD-PEX Icma 16х2мм 200 м №P198"
+            android:text="@string/name_example"
             android:textAlignment="center"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
@@ -54,7 +55,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:layout_toStartOf="@+id/price_count"
-            android:text="Цена за штуку:"
+            android:text="@string/price_for_one"
             android:textColor="@color/primaryText"
             android:textSize="16sp" />
 
@@ -101,9 +102,9 @@
             android:layout_alignBottom="@id/articul"
             android:layout_marginEnd="16dp"
             android:layout_toStartOf="@+id/over_price"
-            android:text="Итого:"
+            android:text="@string/price_sum"
             android:textColor="@color/primaryText"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/over_price"

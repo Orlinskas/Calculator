@@ -53,6 +53,18 @@
     <string name="enter_data">Вхідні дані</string>
     <string name="errorValue">n/a</string>
     <string name="done">Добре</string>
+    <string name="recalculate">Перерахувати</string>
+    <string name="order">Замовити</string>
+    <string name="sum">Сума:</string>
+    <string name="item_list">Список деталей</string>
+    <string name="see_calculate_values">Подивитись вхідні дані</string>
+    <string name="recomendet_contur_count">Рекомендована кількість контурів:</string>
+    <string name="loop_lenght">Загальна довжина труби:</string>
+    <string name="result">Результати</string>
+    <string name="name_example">Труба GOLD-PEX Icma 16х2мм 200 м №P198</string>
+    <string name="price_for_one">Ціна за штуку:</string>
+    <string name="price_sum">Итого:</string>
+    <string name="room_lenght">Довжина примiщення</string>
 
     <string-array name="steps">
         <item>10</item>
