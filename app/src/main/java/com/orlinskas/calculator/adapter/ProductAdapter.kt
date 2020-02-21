@@ -26,8 +26,6 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
         //context.theme.resolveAttribute(android.R.attr.selectableItemBackgroundBorderless, outValue, true)
 
         transformation = RoundedTransformationBuilder()
-            .borderColor(R.color.white)
-            .borderWidthDp(3F)
             .oval(true)
             .build()
     }
