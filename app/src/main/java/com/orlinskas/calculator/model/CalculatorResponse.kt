@@ -1,5 +1,6 @@
 package com.orlinskas.calculator.model
 
+import com.google.gson.annotations.SerializedName
 import ua.brander.core.simple.repository.Convertable
 import java.io.Serializable
 
@@ -15,36 +16,44 @@ data class CalculatorResponse(
 }
 
 data class Dictionary(
-    val ru: Location,
-    val ua: Location
+    val ru: Localization,
+    val ua: Localization
 ): Serializable
 
 data class Result(
+    @SerializedName("calculation_result")
     val calculationResult: CalculationResult,
+    @SerializedName("input_values")
     val inputValues: InputValues,
     val products: List<Product>,
+    @SerializedName("total_sum")
     val totalSum: String
 ): Serializable
 
-data class Location(
+data class Localization(
     val count: String,
     val distance: String,
     val insulation: String,
     val length: String,
     val name: String,
     val price: String,
+    @SerializedName("quantity_contour")
     val quantityContour: String,
     val regulation: String,
     val sku: String,
     val step: String,
     val sum: String,
+    @SerializedName("total_sum")
     val totalSum: String,
-    val tube_length: String,
+    @SerializedName("tube_length")
+    val tubeLength: String,
     val width: String
 ): Serializable
 
 data class CalculationResult(
+    @SerializedName("quantity_contour")
     val quantityContour: Int,
+    @SerializedName("tube_length")
     val tubeLength: Int
 ): Serializable
 

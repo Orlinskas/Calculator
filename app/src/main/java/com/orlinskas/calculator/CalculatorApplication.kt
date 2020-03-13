@@ -4,6 +4,9 @@ import android.app.Application
 import com.orlinskas.calculator.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
+import timber.log.Timber
+import timber.log.Timber.DebugTree
+
 
 class CalculatorApplication : Application() {
 
@@ -15,6 +18,10 @@ class CalculatorApplication : Application() {
             modules(listOf(viewModelModule, netWorkModule, repositoryModule, useCaseModule, adaptersModule))
         }
 
-        provideStetho(this)
+        if (BuildConfig.DEBUG) {
+            provideStetho(this)
+            Timber.plant(DebugTree())
+        }
+
     }
 }

@@ -6,7 +6,7 @@ data class CalculatorResultModel(
     val calculationResult: CalculationResult?,
     val inputValues: InputValues?,
     val products: List<Product>?,
-    val ru: Location?,
+    val ru: Localization?,
     val totalSum: String?,
-    val ua: Location?
+    val ua: Localization?
 ): Serializable

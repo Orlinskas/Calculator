@@ -65,6 +65,7 @@
     <string name="price_for_one">Ціна за штуку:</string>
     <string name="price_sum">Итого:</string>
     <string name="room_lenght">Довжина примiщення</string>
+    <string name="indent"> - </string>
 
     <string-array name="steps">
         <item>10</item>

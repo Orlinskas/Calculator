@@ -5,9 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <import type="android.view.View"/>
+        <import type="android.text.TextUtils"/>
         <variable
-            name="input_values"
-            type="com.orlinskas.calculator.model.InputValues" />
+            name="result"
+            type="com.orlinskas.calculator.model.CalculatorResultModel" />
+        <variable
+            name="resultLocalization"
+            type="com.orlinskas.calculator.model.Localization" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,20 +68,20 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/wall_height_text"
+            android:id="@+id/wall_height_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@string/wall_height"
+            android:text="@{TextUtils.isEmpty(resultLocalization.length) ? View.GONE : resultLocalization.length + @string/indent + result.inputValues.length}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/wall_weight_text"
+            android:id="@+id/wall_weight_field"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

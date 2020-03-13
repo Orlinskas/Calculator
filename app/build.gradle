@@ -33,6 +33,10 @@ android {
     dataBinding {
         enabled = true
     }
+    configurations.all() {
+        resolutionStrategy.force "org.antlr:antlr4-runtime:4.5.3"
+        resolutionStrategy.force "org.antlr:antlr4-tool:4.5.3"
+    }
 }
 
 dependencies {
@@ -89,4 +93,7 @@ dependencies {
 
     //profiler
     implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.5'
+
+    //log
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
