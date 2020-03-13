@@ -1,7 +1,6 @@
 package com.orlinskas.calculator.presentation.result
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -11,7 +10,6 @@ import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
 import com.orlinskas.calculator.adapter.ProductAdapter
 import com.orlinskas.calculator.model.CalculatorResultModel
 import com.orlinskas.calculator.model.Product
-import com.orlinskas.calculator.presentation.main.MainActivity
 import com.orlinskas.calculator.view.BottomSheetEnterData
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_result.*
@@ -58,11 +56,11 @@ class ResultActivity : AppCompatActivity() {
             initProductRecycleView(it)
         }
 
-        val magistralLength = resultModel.calculation_result?.tube_length.toString() + " м."
-        lenght_magistral.text = magistralLength
-        contur_count.text = resultModel.calculation_result?.quantity_contour.toString()
+        val magistralLength = resultModel.calculationResult?.tubeLength.toString() + " м."
+        length_magistral_value.text = magistralLength
+        contur_count_value.text = resultModel.calculationResult?.quantityContour.toString()
 
-        price.text = resultModel.total_sum
+        price.text = resultModel.totalSum
     }
 
     private fun initProductRecycleView(products: List<Product>) {

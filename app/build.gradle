@@ -30,6 +30,9 @@ android {
         abortOnError false
         ignoreWarnings true
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -41,12 +44,12 @@ dependencies {
     //androidx
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
     implementation "androidx.appcompat:appcompat:1.1.0"
-    implementation "androidx.core:core-ktx:1.1.0"
+    implementation "androidx.core:core-ktx:1.2.0"
 
-    // ViewModel Kotlin support
+    //viewModel Kotlin support
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    kapt "androidx.lifecycle:lifecycle-compiler:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
 
     //test
     testImplementation "junit:junit:4.12"
@@ -65,9 +68,9 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.6.2"
     implementation "com.squareup.okhttp3:logging-interceptor:4.2.2"
 
-    // Room
-    implementation "androidx.room:room-runtime:2.2.3"
-    kapt "androidx.room:room-compiler:2.2.3"
+    //room
+    implementation "androidx.room:room-runtime:2.2.4"
+    kapt "androidx.room:room-compiler:2.2.4"
 
     //brander lib
     implementation "ua.brander.core:core:1.0.0"
@@ -75,10 +78,15 @@ dependencies {
     //ui
     implementation 'com.github.douglasjunior:android-simple-tooltip:0.2.3'
 
-    //profiler
-    implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.3'
-
     //picasso
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //stetho
+    debugImplementation "com.facebook.stetho:stetho:1.5.1"
+    debugImplementation "com.facebook.stetho:stetho-okhttp3:1.5.1"
+    debugImplementation 'com.facebook.stetho:stetho-urlconnection:1.4.2'
+
+    //profiler
+    implementation 'com.itkacher.okhttpprofiler:okhttpprofiler:1.0.5'
 }

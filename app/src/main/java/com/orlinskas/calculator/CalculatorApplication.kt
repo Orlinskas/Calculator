@@ -9,9 +9,12 @@ class CalculatorApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
         startKoin {
             androidContext(this@CalculatorApplication)
-            modules(listOf(viewModelModule, netWorkModule, reposiryModule, useCaseModule, adaptersModule))
+            modules(listOf(viewModelModule, netWorkModule, repositoryModule, useCaseModule, adaptersModule))
         }
+
+        provideStetho(this)
     }
 }

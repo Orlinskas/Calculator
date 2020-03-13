@@ -9,8 +9,8 @@ data class CalculatorResponse(
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(result?.calculation_result, result?.input_values,
-            result?.products, dictionary?.ru, result?.total_sum, dictionary?.ua)
+        return CalculatorResultModel(result?.calculationResult, result?.inputValues,
+            result?.products, dictionary?.ru, result?.totalSum, dictionary?.ua)
     }
 }
 
@@ -20,10 +20,10 @@ data class Dictionary(
 ): Serializable
 
 data class Result(
-    val calculation_result: CalculationResult,
-    val input_values: InputValues,
+    val calculationResult: CalculationResult,
+    val inputValues: InputValues,
     val products: List<Product>,
-    val total_sum: String
+    val totalSum: String
 ): Serializable
 
 data class Location(
@@ -33,19 +33,19 @@ data class Location(
     val length: String,
     val name: String,
     val price: String,
-    val quantity_contour: String,
+    val quantityContour: String,
     val regulation: String,
     val sku: String,
     val step: String,
     val sum: String,
-    val total_sum: String,
+    val totalSum: String,
     val tube_length: String,
     val width: String
 ): Serializable
 
 data class CalculationResult(
-    val quantity_contour: Int,
-    val tube_length: Int
+    val quantityContour: Int,
+    val tubeLength: Int
 ): Serializable
 
 data class InputValues(

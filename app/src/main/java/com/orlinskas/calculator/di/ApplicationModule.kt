@@ -22,13 +22,12 @@ val viewModelModule = module {
 }
 val netWorkModule = module {
     single { NetworkHandler(androidContext()) }
-
     factory { AuthInterceptor() }
     factory { provideClient(get()) }
     factory { provideRetrofit(get()) }
     factory { provideApi(get()) }
 }
-val reposiryModule = module {
+val repositoryModule = module {
     single { SimpleCalculatorRepository(get(), get()) }
 }
 val useCaseModule = module {
