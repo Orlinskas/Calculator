@@ -8,10 +8,10 @@
         <import type="android.view.View"/>
         <import type="android.text.TextUtils"/>
         <variable
-            name="result"
-            type="com.orlinskas.calculator.model.CalculatorResultModel" />
+            name="values"
+            type="com.orlinskas.calculator.model.InputValues" />
         <variable
-            name="resultLocalization"
+            name="fieldNames"
             type="com.orlinskas.calculator.model.Localization" />
     </data>
 
@@ -75,7 +75,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@{result.ua.quantityContour}"
+            android:text="@{fieldNames.length + @string/indent + String.valueOf(values.length)}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
@@ -88,7 +88,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@string/wall_height"
+            android:text="@{fieldNames.width + @string/indent + String.valueOf(values.width)}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
@@ -101,7 +101,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@string/wall_height"
+            android:text="@{fieldNames.step + @string/indent + String.valueOf(values.step)}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
@@ -114,7 +114,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@string/wall_height"
+            android:text="@{fieldNames.distance + @string/indent + String.valueOf(values.distance)}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
@@ -127,8 +127,8 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:lineSpacingExtra="6sp"
-            android:text="@string/regulation"
-            android:editable="false"
+            android:text="@{fieldNames.regulation}"
+            android:checked="@{values.regulation}"
             android:focusable="false"
             android:clickable="false"
             android:textColor="@color/primaryText"
@@ -143,10 +143,10 @@
             android:layout_marginBottom="24dp"
             android:layout_marginEnd="24dp"
             android:lineSpacingExtra="6sp"
-            android:editable="false"
             android:focusable="false"
             android:clickable="false"
-            android:text="@string/isolation"
+            android:text="@{fieldNames.insulation}"
+            android:checked="@{values.insulation}"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
 

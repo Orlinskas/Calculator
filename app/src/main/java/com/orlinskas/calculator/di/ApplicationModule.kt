@@ -6,6 +6,7 @@ import com.orlinskas.calculator.network.AuthInterceptor
 import com.orlinskas.calculator.network.provideApi
 import com.orlinskas.calculator.network.provideClient
 import com.orlinskas.calculator.network.provideRetrofit
+import com.orlinskas.calculator.preferense.LocalizationPref
 import com.orlinskas.calculator.presentation.main.MainViewModel
 import com.orlinskas.calculator.presentation.result.ResultViewModel
 import com.orlinskas.calculator.presentation.splash.SplashViewModel
@@ -15,6 +16,9 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ua.brander.core.platform.NetworkHandler
 
+val userModule = module {
+    single { LocalizationPref(androidContext()) }
+}
 val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { MainViewModel(androidContext(), get()) }

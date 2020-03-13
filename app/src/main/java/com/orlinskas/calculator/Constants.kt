@@ -38,4 +38,9 @@ enum class Isolation(val value: String) {
     ECO("eco")
 }
 
+enum class LocalizationEnum(val code: String) {
+    RU("ru"),
+    UA("ua")
+}
+
 const val SERIALIZABLE_CALCULATOR_RESULT_MODEL = "resultModel"

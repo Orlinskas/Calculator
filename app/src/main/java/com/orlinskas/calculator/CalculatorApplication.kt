@@ -15,7 +15,7 @@ class CalculatorApplication : Application() {
 
         startKoin {
             androidContext(this@CalculatorApplication)
-            modules(listOf(viewModelModule, netWorkModule, repositoryModule, useCaseModule, adaptersModule))
+            modules(listOf(userModule, viewModelModule, netWorkModule, repositoryModule, useCaseModule, adaptersModule))
         }
 
         if (BuildConfig.DEBUG) {
