@@ -4,23 +4,23 @@ import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.orlinskas.calculator.R
+import com.orlinskas.calculator.databinding.BottomSheetLayoutEnterDataBinding
 import com.orlinskas.calculator.model.CalculatorResultModel
 
 class BottomSheetEnterData : BottomSheetDialogFragment() {
     lateinit var resultModel: CalculatorResultModel
-    //private lateinit var bottomSheetBinding: BottomSheetLayoutEnterDataBinding
+    private lateinit var bottomSheetBinding: BottomSheetLayoutEnterDataBinding
 
     override fun onAttach(activity: Activity) {
         super.onAttach(activity)
-        //bottomSheetBinding = DataBindingUtil.inflate(LayoutInflater.from(context),
-        //    R.layout.bottom_sheet_layout_enter_data,
-        //    null,
-        //    false
-        //)
+        bottomSheetBinding = DataBindingUtil.inflate(LayoutInflater.from(context),
+            R.layout.bottom_sheet_layout_enter_data,
+            null,
+            false
+        )
     }
 
     //override fun onCreateView(
@@ -32,12 +32,12 @@ class BottomSheetEnterData : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //bottomSheetBinding.result = resultModel
-        //bottomSheetBinding.resultLocalization = resultModel.ru
+        bottomSheetBinding.result = resultModel
+        bottomSheetBinding.resultLocalization = resultModel.ru
 
-        //help_bottom_sheet_close_image_view.setOnClickListener {
-        //    this.dismiss()
-        //}
+        bottomSheetBinding.helpBottomSheetCloseImageView.setOnClickListener {
+            this.dismiss()
+        }
 
         val wallHeightValue = "${getString(R.string.wall_height)}: ${resultModel.inputValues?.length ?: getString(R.string.errorValue)} м."
         val wallWeightValue = "${getString(R.string.wall_weight)}: ${resultModel.inputValues?.width ?: getString(R.string.errorValue)} м."

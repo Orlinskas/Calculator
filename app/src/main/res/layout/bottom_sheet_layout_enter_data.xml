@@ -75,7 +75,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:background="?android:attr/actionBarItemBackground"
-            android:text="@{TextUtils.isEmpty(resultLocalization.length) ? View.GONE : resultLocalization.length + @string/indent + result.inputValues.length}"
+            android:text="@{result.ua.quantityContour}"
             android:textAlignment="viewStart"
             android:textColor="@color/primaryText"
             android:textSize="18sp" />
