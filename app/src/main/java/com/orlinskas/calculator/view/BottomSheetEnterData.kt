@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.databinding.BottomSheetLayoutEnterDataBinding
-import com.orlinskas.calculator.model.CalculatorResultModel
+import com.orlinskas.calculator.data.model.CalculatorResultModel
 
 class BottomSheetEnterData : BottomSheetDialogFragment() {
     lateinit var resultModel: CalculatorResultModel

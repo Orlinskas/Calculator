@@ -1,7 +1,8 @@
 package com.orlinskas.calculator.di
 
 import com.orlinskas.calculator.adapter.ProductAdapter
-import com.orlinskas.calculator.interactor.SimpleCalculatorUseCase
+import com.orlinskas.calculator.data.provideAppDatabase
+import com.orlinskas.calculator.interactor.CalculateUseCase
 import com.orlinskas.calculator.network.AuthInterceptor
 import com.orlinskas.calculator.network.provideApi
 import com.orlinskas.calculator.network.provideClient
@@ -10,7 +11,7 @@ import com.orlinskas.calculator.preferense.LocalizationPref
 import com.orlinskas.calculator.presentation.main.MainViewModel
 import com.orlinskas.calculator.presentation.result.ResultViewModel
 import com.orlinskas.calculator.presentation.splash.SplashViewModel
-import com.orlinskas.calculator.repository.SimpleCalculatorRepository
+import com.orlinskas.calculator.repository.CalculatorRepository
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -24,6 +25,9 @@ val viewModelModule = module {
     viewModel { MainViewModel(androidContext(), get()) }
     viewModel { ResultViewModel(androidContext()) }
 }
+val dataModule = module {
+    single { provideAppDatabase(androidContext()) }
+}
 val netWorkModule = module {
     single { NetworkHandler(androidContext()) }
     factory { AuthInterceptor() }
@@ -32,10 +36,10 @@ val netWorkModule = module {
     factory { provideApi(get()) }
 }
 val repositoryModule = module {
-    single { SimpleCalculatorRepository(get(), get()) }
+    single { CalculatorRepository(get(), get(), get()) }
 }
 val useCaseModule = module {
-    factory{ SimpleCalculatorUseCase(get()) }
+    factory{ CalculateUseCase(get()) }
 }
 val adaptersModule = module {
     factory { ProductAdapter(androidContext()) }

@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.orlinskas.calculator.Isolation
 import com.orlinskas.calculator.R
-import com.orlinskas.calculator.interactor.SimpleCalculatorUseCase
-import com.orlinskas.calculator.model.CalculatorRequest
-import com.orlinskas.calculator.model.CalculatorResultModel
+import com.orlinskas.calculator.interactor.CalculateUseCase
+import com.orlinskas.calculator.network.request.CalculatorRequest
+import com.orlinskas.calculator.data.model.CalculatorResultModel
 import ua.brander.core.viewmodel.BaseViewModel
 
-class MainViewModel(val context: Context, private val simpleCalculatorUseCase: SimpleCalculatorUseCase) : BaseViewModel() {
+class MainViewModel(val context: Context, private val calculateUseCase: CalculateUseCase) : BaseViewModel() {
     val OPTIMAL = context.resources.getString(R.string.optimal)
     val ECONOM = context.resources.getString(R.string.econom)
     val REGULATION_YES = context.resources.getString(R.string.regulation_yes)
@@ -31,7 +31,7 @@ class MainViewModel(val context: Context, private val simpleCalculatorUseCase: S
     }
 
     fun calculate(params: CalculatorRequest) {
-        simpleCalculatorUseCase(params) {
+        calculateUseCase(params) {
             it.either(::handleFailure, ::processCalculatorData)
         }
     }

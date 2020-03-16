@@ -33,3 +33,4 @@ fun provideClient(authInterceptor: AuthInterceptor): OkHttpClient {
 }
 
 fun provideApi(retrofit: Retrofit): Api = retrofit.create(Api::class.java)
+

@@ -8,7 +8,7 @@
     <data>
         <variable
             name="result"
-            type="com.orlinskas.calculator.model.CalculatorResultModel" />
+            type="com.orlinskas.calculator.data.model.CalculatorResultModel" />
     </data>
 
 <androidx.core.widget.NestedScrollView

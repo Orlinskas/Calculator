@@ -1,17 +1,21 @@
 package com.orlinskas.calculator.repository
 
+import com.orlinskas.calculator.data.AppDatabase
+import com.orlinskas.calculator.data.dao.CalculatorResultDao
 import com.orlinskas.calculator.getDefaultSceleton
-import com.orlinskas.calculator.model.CalculatorRequest
-import com.orlinskas.calculator.model.CalculatorResponse
-import com.orlinskas.calculator.model.CalculatorResultModel
+import com.orlinskas.calculator.network.request.CalculatorRequest
+import com.orlinskas.calculator.network.response.CalculatorResponse
+import com.orlinskas.calculator.data.model.CalculatorResultModel
 import com.orlinskas.calculator.network.Api
 import ua.brander.core.exception.Failure
 import ua.brander.core.functional.Either
 import ua.brander.core.platform.NetworkHandler
 
-class SimpleCalculatorRepository(
+class CalculatorRepository(
     private val api: Api,
-    private val networkHandler: NetworkHandler
+    private val networkHandler: NetworkHandler,
+    private val appDatabase: AppDatabase
+
 ): Repository<CalculatorResponse, CalculatorResultModel> {
 
     override fun updateOrStoreLocally(result: Any?) {
@@ -29,5 +33,9 @@ class SimpleCalculatorRepository(
         } else {
             Either.Left(Failure.NetworkConnection())
         }
+    }
+
+    fun save(params: CalculatorResultModel): Int {
+        return appDatabase.calculatorResultDao().saveCalculatorResult(params)
     }
 }

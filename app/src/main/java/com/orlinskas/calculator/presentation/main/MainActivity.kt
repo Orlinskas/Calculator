@@ -11,9 +11,9 @@ import com.orlinskas.calculator.ApiResponse
 import com.orlinskas.calculator.BASE_REQUEST
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
-import com.orlinskas.calculator.model.CalculatorRequest
-import com.orlinskas.calculator.model.CalculatorResultModel
-import com.orlinskas.calculator.model.Form
+import com.orlinskas.calculator.network.request.CalculatorRequest
+import com.orlinskas.calculator.data.model.CalculatorResultModel
+import com.orlinskas.calculator.network.request.Form
 import com.orlinskas.calculator.presentation.result.ResultActivity
 import com.orlinskas.calculator.view.BottomSheetInfo
 import com.orlinskas.calculator.view.BottomSheetMessage
@@ -180,7 +180,10 @@ class MainActivity : AppCompatActivity() {
             step_field.getSelectedItem(), weight_field.getValue()
         )
 
-        return CalculatorRequest(type = BASE_REQUEST, form = form)
+        return CalculatorRequest(
+            type = BASE_REQUEST,
+            form = form
+        )
     }
 
     private fun showProgress() {

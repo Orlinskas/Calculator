@@ -1,4 +1,4 @@
-package com.orlinskas.calculator.model
+package com.orlinskas.calculator.network.request
 
 data class CalculatorRequest(
     val form: Form,

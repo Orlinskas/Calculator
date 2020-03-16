@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedTransformationBuilder
 import com.orlinskas.calculator.R
-import com.orlinskas.calculator.model.Product
+import com.orlinskas.calculator.network.response.Product
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 import kotlinx.android.synthetic.main.row_product.view.*

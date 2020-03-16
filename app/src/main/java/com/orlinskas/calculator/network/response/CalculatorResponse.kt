@@ -1,17 +1,20 @@
-package com.orlinskas.calculator.model
+package com.orlinskas.calculator.network.response
 
 import com.google.gson.annotations.SerializedName
+import com.orlinskas.calculator.data.model.CalculatorResultModel
 import ua.brander.core.simple.repository.Convertable
 import java.io.Serializable
 
 data class CalculatorResponse(
     val dictionary: Dictionary? = null,
-    val result: Result ? = null
+    val result: Result? = null
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
-        return CalculatorResultModel(result?.calculationResult, result?.inputValues,
-            result?.products, dictionary?.ru, result?.totalSum, dictionary?.ua)
+        return CalculatorResultModel(
+            (0 until 999999999).random(), result?.calculationResult, result?.inputValues,
+            result?.products, dictionary?.ru, result?.totalSum, dictionary?.ua
+        )
     }
 }
 

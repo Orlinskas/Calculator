@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.orlinskas.calculator.R
 import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
 import com.orlinskas.calculator.adapter.ProductAdapter
-import com.orlinskas.calculator.model.CalculatorResultModel
-import com.orlinskas.calculator.model.Product
+import com.orlinskas.calculator.data.model.CalculatorResultModel
+import com.orlinskas.calculator.network.response.Product
 import com.orlinskas.calculator.view.BottomSheetEnterData
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_result.*
