@@ -14,7 +14,7 @@ interface CalculatorResultDao {
     fun getCalculatorResult(id: Int): CalculatorResultModel
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveCalculatorResult(calculatorResultModel: CalculatorResultModel): Int
+    fun saveCalculatorResult(calculatorResultModel: CalculatorResultModel): Long
 
     @Delete
     fun removeCalculatorResult(calculatorResultModel: CalculatorResultModel): Int

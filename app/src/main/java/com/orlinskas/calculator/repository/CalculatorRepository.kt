@@ -35,7 +35,7 @@ class CalculatorRepository(
         }
     }
 
-    fun save(params: CalculatorResultModel): Int {
+    fun save(params: CalculatorResultModel): Long {
         return appDatabase.calculatorResultDao().saveCalculatorResult(params)
     }
 }

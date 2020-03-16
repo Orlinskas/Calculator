@@ -10,14 +10,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedTransformationBuilder
 import com.orlinskas.calculator.R
-import com.orlinskas.calculator.network.response.Product
+import com.orlinskas.calculator.data.model.Product
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Transformation
 import kotlinx.android.synthetic.main.row_product.view.*
 
 class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var onItemClickListener: OnProductClickListener? = null
-    private var productList: ArrayList<Product> = arrayListOf()
+    private var productResponseList: ArrayList<Product> = arrayListOf()
     private val outValue = TypedValue()
     private lateinit var transformation: Transformation
 
@@ -32,21 +32,21 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
 
     fun setItems(list: List<Product>) {
         if(list.isNotEmpty()) {
-            productList = ArrayList(list)
+            productResponseList = ArrayList(list)
             notifyDataSetChanged()
         }
     }
 
     fun getItems(): ArrayList<Product> {
-        return productList
+        return productResponseList
     }
 
     fun getEmployee(position: Int): Product {
-        return productList[position]
+        return productResponseList[position]
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return productResponseList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -64,13 +64,13 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
         val articul: TextView = itemView.articul
         init {
             itemView.setOnClickListener {
-                onItemClickListener?.onProductClick(productList[adapterPosition], adapterPosition)
+                onItemClickListener?.onProductClick(productResponseList[adapterPosition], adapterPosition)
             }
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val item = productList[position]
+        val item = productResponseList[position]
         val itemHolder = holder as ItemViewHolder
 
         itemHolder.apply {
@@ -90,12 +90,12 @@ class ProductAdapter(val context: Context): RecyclerView.Adapter<RecyclerView.Vi
 
     fun removeEmployee(position: Int) {
         notifyItemRemoved(position)
-        productList.removeAt(position)
+        productResponseList.removeAt(position)
     }
 
-    fun addEmployee(product: Product) {
-        productList.add(product)
-        notifyItemInserted(productList.lastIndex)
+    fun addEmployee(productResponse: Product) {
+        productResponseList.add(productResponse)
+        notifyItemInserted(productResponseList.lastIndex)
     }
 
     interface OnProductClickListener {

@@ -7,9 +7,9 @@ import ua.brander.core.functional.Either
 import ua.brander.core.interactor.UseCase
 
 class SaveCalculatorResultUseCase(private val calculatorRepository: CalculatorRepository)
-    : UseCase<Int, CalculatorResultModel>() {
+    : UseCase<Long, CalculatorResultModel>() {
 
-    override suspend fun run(params: CalculatorResultModel): Either<Failure, Int> {
+    override suspend fun run(params: CalculatorResultModel): Either<Failure, Long> {
        return Either.Right(calculatorRepository.save(params))
     }
 }

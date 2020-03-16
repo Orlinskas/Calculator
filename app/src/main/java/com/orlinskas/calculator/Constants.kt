@@ -1,9 +1,9 @@
 package com.orlinskas.calculator
 
-import com.orlinskas.calculator.network.response.CalculationResult
+import com.orlinskas.calculator.data.model.CalculationResult
 import com.orlinskas.calculator.data.model.CalculatorResultModel
-import com.orlinskas.calculator.network.response.InputValues
-import com.orlinskas.calculator.network.response.Product
+import com.orlinskas.calculator.data.model.InputValues
+import com.orlinskas.calculator.data.model.Product
 
 const val BASE_URL = "https://icma.com.ua/api/"
 const val HEADER_TYPE = "Content-type"

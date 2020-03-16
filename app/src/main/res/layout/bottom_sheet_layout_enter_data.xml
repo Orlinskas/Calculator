@@ -9,10 +9,10 @@
         <import type="android.text.TextUtils"/>
         <variable
             name="values"
-            type="com.orlinskas.calculator.network.response.InputValues" />
+            type="com.orlinskas.calculator.data.model.InputValues" />
         <variable
             name="fieldNames"
-            type="com.orlinskas.calculator.network.response.Localization" />
+            type="com.orlinskas.calculator.data.model.Localization" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

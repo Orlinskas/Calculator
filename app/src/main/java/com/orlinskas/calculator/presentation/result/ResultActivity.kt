@@ -9,7 +9,7 @@ import com.orlinskas.calculator.R
 import com.orlinskas.calculator.SERIALIZABLE_CALCULATOR_RESULT_MODEL
 import com.orlinskas.calculator.adapter.ProductAdapter
 import com.orlinskas.calculator.data.model.CalculatorResultModel
-import com.orlinskas.calculator.network.response.Product
+import com.orlinskas.calculator.data.model.Product
 import com.orlinskas.calculator.view.BottomSheetEnterData
 import com.orlinskas.calculator.view.BottomSheetInfo
 import kotlinx.android.synthetic.main.activity_result.*
@@ -52,7 +52,7 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun displayResult(resultModel: CalculatorResultModel) {
-        resultModel.products?.let {
+        resultModel.product?.let {
             initProductRecycleView(it)
         }
 
@@ -63,9 +63,9 @@ class ResultActivity : AppCompatActivity() {
         price.text = resultModel.totalSum
     }
 
-    private fun initProductRecycleView(products: List<Product>) {
+    private fun initProductRecycleView(product: List<Product>) {
         productAdapter.apply {
-            setItems(products)
+            setItems(product)
             setOnItemClickListener(object : ProductAdapter.OnProductClickListener {
                 override fun onProductClick(listItem: Product, position: Int) {
                     //

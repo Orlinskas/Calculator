@@ -1,39 +1,55 @@
 package com.orlinskas.calculator.network.response
 
 import com.google.gson.annotations.SerializedName
-import com.orlinskas.calculator.data.model.CalculatorResultModel
+import com.orlinskas.calculator.data.model.*
 import ua.brander.core.simple.repository.Convertable
 import java.io.Serializable
 
 data class CalculatorResponse(
-    val dictionary: Dictionary? = null,
-    val result: Result? = null
+    @SerializedName("dictionary")
+    val dictionaryResponse: DictionaryResponse? = null,
+    @SerializedName("result")
+    val resultResponse: ResultResponse? = null
 ): Convertable<CalculatorResultModel> {
 
     override fun convert(): CalculatorResultModel {
         return CalculatorResultModel(
-            (0 until 999999999).random(), result?.calculationResult, result?.inputValues,
-            result?.products, dictionary?.ru, result?.totalSum, dictionary?.ua
+            (0 until 9999999999).random(), resultResponse?.calculationResultResponse?.convert(),
+            resultResponse?.inputValuesResponse?.convert(), resultResponse?.productResponses?.map { it.convert() },
+            dictionaryResponse?.ru?.convert(), resultResponse?.totalSum, dictionaryResponse?.ua?.convert()
         )
     }
 }
 
-data class Dictionary(
-    val ru: Localization,
-    val ua: Localization
-): Serializable
+data class DictionaryResponse(
+    @SerializedName("ru")
+    val ru: LocalizationResponse,
+    @SerializedName("ua")
+    val ua: LocalizationResponse
+): Serializable, Convertable<Dictionary> {
+    override fun convert(): Dictionary {
+        return Dictionary(ru = ru.convert(), ua = ua.convert())
+    }
+}
 
-data class Result(
+data class ResultResponse(
     @SerializedName("calculation_result")
-    val calculationResult: CalculationResult,
+    val calculationResultResponse: CalculationResultResponse,
     @SerializedName("input_values")
-    val inputValues: InputValues,
-    val products: List<Product>,
+    val inputValuesResponse: InputValuesResponse,
+    @SerializedName("products")
+    val productResponses: List<ProductResponse>,
     @SerializedName("total_sum")
     val totalSum: String
-): Serializable
+): Serializable, Convertable<Result> {
+    override fun convert(): Result {
+        return Result(calculationResult = calculationResultResponse.convert(),
+            inputValues = inputValuesResponse.convert(),
+            product = productResponses.map { it.convert() }, totalSum = totalSum)
+    }
+}
 
-data class Localization(
+data class LocalizationResponse(
     val count: String,
     val distance: String,
     val insulation: String,
@@ -51,33 +67,51 @@ data class Localization(
     @SerializedName("tube_length")
     val tubeLength: String,
     val width: String
-): Serializable
+): Serializable, Convertable<Localization> {
+    override fun convert(): Localization {
+        return Localization(count = count, distance = distance, insulation = insulation, length = length,
+        name = name, price = price, quantityContour = quantityContour, regulation = regulation,
+        sku = sku, step = step, sum = sum, totalSum = totalSum, tubeLength = tubeLength, width = width)
+    }
+}
 
-data class CalculationResult(
+data class CalculationResultResponse(
     @SerializedName("quantity_contour")
     val quantityContour: Int,
     @SerializedName("tube_length")
     val tubeLength: Int
-): Serializable
+): Serializable, Convertable<CalculationResult> {
+    override fun convert(): CalculationResult {
+        return CalculationResult(quantityContour = quantityContour, tubeLength = tubeLength)
+    }
+}
 
-data class InputValues(
+data class InputValuesResponse(
     val distance: Float,
     val insulation: Boolean,
     val length: Float,
     val regulation: Boolean,
     val step: Int,
     val width: Float
-): Serializable
+): Serializable, Convertable<InputValues> {
+    override fun convert(): InputValues {
+        return InputValues(distance, insulation, length, regulation, step, width)
+    }
+}
 
-data class Product(
+data class ProductResponse(
     val count: Int,
     val image: String,
     val name: String,
     val price: String,
     val sku: String,
     val sum: String
-): Serializable
+): Serializable, Convertable<Product> {
+    override fun convert(): Product {
+        return Product(count, image, name, price, sku, sum)
+    }
+}
 
-data class Errors(
+data class ErrorsResponse(
     val errors: List<String>
 ): Serializable
