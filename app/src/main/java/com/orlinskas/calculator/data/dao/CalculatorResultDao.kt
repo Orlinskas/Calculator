@@ -8,7 +8,7 @@ import com.orlinskas.calculator.data.model.CalculatorResultModel
 interface CalculatorResultDao {
 
     @Query("SELECT * FROM ${Tables.CALCULATOR_RESULT_TABLE}")
-    fun getCalculatorResult(): List<CalculatorResultModel>
+    fun getCalculatorResults(): List<CalculatorResultModel>
 
     @Query("SELECT * FROM ${Tables.CALCULATOR_RESULT_TABLE} WHERE id=:id")
     fun getCalculatorResult(id: Int): CalculatorResultModel

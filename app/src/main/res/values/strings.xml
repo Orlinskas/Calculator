@@ -77,6 +77,7 @@
     <string name="toast_text_save_done">Сохранено!</string>
     <string name="toast_text_save_fail">Не удалось сохранить</string>
     <string name="save_dialog_error_text">Назовите данный расчет</string>
+    <string name="saved_calculator_result_btn_text">Сохраненные расчеты</string>
 
     <string-array name="steps">
         <item>10</item>

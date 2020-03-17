@@ -82,6 +82,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.result.observe(this, Observer {
             showResult(it)
         })
+
+        show_saved_results.setOnClickListener {
+
+        }
     }
 
     private fun buildMessage(pair: Pair<String, String>): String {

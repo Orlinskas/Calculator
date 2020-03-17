@@ -13,5 +13,4 @@ class CalculateUseCase(private val calculatorRepository: CalculatorRepository) :
     override suspend fun run(params: CalculatorRequest): Either<Failure, CalculatorResultModel> {
         return calculatorRepository.calculate(params)
     }
-
 }

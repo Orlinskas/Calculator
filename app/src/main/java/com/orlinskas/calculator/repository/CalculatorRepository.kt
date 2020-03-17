@@ -38,4 +38,8 @@ class CalculatorRepository(
     fun save(params: CalculatorResultModel): Long {
         return appDatabase.calculatorResultDao().saveCalculatorResult(params)
     }
+
+    fun getAllSavedResults(): List<CalculatorResultModel> {
+        return appDatabase.calculatorResultDao().getCalculatorResults()
+    }
 }
