@@ -12,7 +12,7 @@ import ua.brander.core.simple.repository.Convertable
 interface Repository<T : Convertable<R>, R> {
 
     companion object {
-        const val NETWORK_NOT_AVAILABLE_ERROR_CODE = 1_000_000
+        const val NETWORK_NOT_AVAILABLE_ERROR_CODE = 0
     }
 
     fun convertToLocalFormat(it: T): R {

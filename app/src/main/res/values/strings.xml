@@ -53,7 +53,7 @@
     <string name="enter_data">Вхідні дані</string>
     <string name="errorValue">n/a</string>
     <string name="done">Добре</string>
-    <string name="recalculate">Перерахувати</string>
+    <string name="recalculate">Знову</string>
     <string name="order">Замовити</string>
     <string name="sum">Сума:</string>
     <string name="item_list">Список деталей</string>
@@ -66,6 +66,8 @@
     <string name="price_sum">Итого:</string>
     <string name="room_lenght">Довжина примiщення</string>
     <string name="indent">&#160;—&#160;</string>
+    <string name="save">Зберегти</string>
+    <string name="meters">&#160;м.</string>
 
     <string-array name="steps">
         <item>10</item>

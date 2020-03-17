@@ -6,35 +6,31 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.text.TextUtils"/>
+
         <variable
             name="result"
             type="com.orlinskas.calculator.data.model.CalculatorResultModel" />
     </data>
 
 <androidx.core.widget.NestedScrollView
-
-    android:id="@+id/activity_calculator_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".presentation.main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activity_calculator_constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".presentation.main.MainActivity">
 
-        <TextView
+        <Button
+            style="@style/TextButtonWithIcon"
             android:id="@+id/info_btn"
+            app:icon="@drawable/ic_info_24px_rounded"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="16dp"
             android:text="@string/btn_info"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +43,7 @@
             app:srcCompat="@drawable/ic_logo_ru" />
 
         <TextView
-            android:id="@+id/activity_calculator_title"
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -73,7 +69,7 @@
             android:textColor="@color/primaryText"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/length_magistral_value"
-            app:layout_constraintTop_toBottomOf="@+id/activity_calculator_title" />
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <TextView
             android:id="@+id/length_magistral_value"
@@ -82,19 +78,21 @@
             android:layout_alignParentEnd="true"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:text="@{String.valueOf(result.calculationResult.tubeLength) + @string/meters}"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_calculator_title" />
+            app:layout_constraintTop_toBottomOf="@+id/title" />
 
         <TextView
-            android:id="@+id/contur_count_value"
+            android:id="@+id/contour_count_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
+            android:text="@{String.valueOf(result.calculationResult.quantityContour)}"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -112,40 +110,23 @@
             android:textAlignment="viewEnd"
             android:textColor="@color/primaryText"
             android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/contur_count_value"
+            app:layout_constraintEnd_toStartOf="@+id/contour_count_value"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/length_magistral_field_name" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/enter_data_btn"
-            style="@style/TextLayoutStyle"
+        <Button
+            style="@style/OutlinedButtonWitIcon"
+            app:icon="@drawable/ic_visibility_black_24dp"
+            android:id="@+id/show_data_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
-            android:elevation="3dp"
-            app:boxStrokeColor="@android:color/black"
-            android:background="@color/field_background"
-            app:endIconDrawable="@android:drawable/ic_menu_view"
-            app:endIconMode="custom"
-            app:endIconTint="@android:color/black"
+            android:text="@string/see_calculate_values"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contur_count_value">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/show_data_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:editable="false"
-                android:focusable="false"
-                android:hint="@string/see_calculate_values"
-                app:hintTextAppearance="@style/TextAppearance.AppCompat.Body2"
-                app:hintTextColor="@color/design_default_color_on_secondary" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/contour_count_value" />
 
         <View
             android:id="@+id/activity_calculator_divider_view"
@@ -157,10 +138,10 @@
             android:background="@color/field_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/enter_data_btn" />
+            app:layout_constraintTop_toBottomOf="@id/show_data_btn" />
 
         <TextView
-            android:id="@+id/activity_calculator_title2"
+            android:id="@+id/title2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -176,20 +157,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_calculator_divider_view" />
 
-        <TextView
-            android:id="@+id/activity_calculator_title3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:text="@string/sum"
-            android:textAlignment="viewStart"
-            android:textColor="@color/primaryText"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/back_btn"
-            app:layout_constraintEnd_toStartOf="@+id/price"
-            app:layout_constraintTop_toTopOf="@+id/back_btn" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/product_recycler_view"
             android:layout_width="match_parent"
@@ -197,10 +164,10 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activity_calculator_title2" />
+            app:layout_constraintTop_toBottomOf="@id/title2" />
 
         <View
-            android:id="@+id/activity_calculator_divider_bottom_view"
+            android:id="@+id/divider_bottom_view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="24dp"
@@ -212,44 +179,67 @@
             app:layout_constraintTop_toBottomOf="@id/product_recycler_view" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/price_field_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/sum"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primaryText"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/price_value"
+            app:layout_constraintTop_toBottomOf="@+id/divider_bottom_view" />
+
+        <TextView
+            android:id="@+id/price_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:text="@{TextUtils.isEmpty(result.totalSum) ? @string/errorValue : result.totalSum}"
             android:textColor="@color/primaryText"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_calculator_divider_bottom_view" />
+            app:layout_constraintTop_toTopOf="@+id/divider_bottom_view" />
 
         <Button
+            style="@style/DefaultButtonWithIcon"
             android:id="@+id/back_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/selectableItemBackground"
+            app:icon="@drawable/ic_undo_black_24dp"
+            android:layout_width="0dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/recalculate"
-            app:cornerRadius="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/save_btn"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
+            app:layout_constraintTop_toBottomOf="@+id/price_value" />
+
+        <Button
+            style="@style/DefaultButtonWithIcon"
+            android:id="@+id/save_btn"
+            app:icon="@drawable/ic_write"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toBottomOf="@+id/price_value" />
 
         <Button
             android:id="@+id/contact_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="?attr/selectableItemBackground"
+            style="@style/DefaultButtonWithIcon"
+            android:layout_width="0dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginStart="0dp"
             android:text="@string/order"
-            app:cornerRadius="15dp"
+            app:icon="@drawable/ic_phone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/price" />
+            app:layout_constraintEnd_toEndOf="@+id/save_btn"
+            app:layout_constraintStart_toStartOf="@+id/save_btn"
+            app:layout_constraintTop_toBottomOf="@+id/save_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
