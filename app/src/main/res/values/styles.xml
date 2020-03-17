@@ -5,32 +5,32 @@
     </style>
 
     <style name="baseDarkTheme" parent="AppTheme">
-        <item name="android:statusBarColor" tools:targetApi="m">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:targetApi="m">@color/primaryDark</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
     </style>
 
     <style name="TextLayoutStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeColor">@color/primary</item>
         <item name="hintTextColor">@color/hintText</item>
-        <item name="errorTextColor">@color/errorColor</item>
+        <item name="errorTextColor">@color/error</item>
     </style>
 
     <style name="TextLayoutWithMenuStyle" parent="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeColor">@color/primary</item>
         <item name="hintTextColor">@color/hintText</item>
-        <item name="errorTextColor">@color/errorColor</item>
+        <item name="errorTextColor">@color/error</item>
     </style>
     
     <style name="DefaultButton" parent="@style/Widget.MaterialComponents.Button">
@@ -62,7 +62,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="cornerRadius">15dp</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/primary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
@@ -71,9 +71,18 @@
         <item name="android:elevation">3dp</item>
         <item name="iconPadding">10dp</item>
         <item name="iconGravity">end</item>
-        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeColor">@color/primary</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="DialogButton">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">?selectableItemBackground</item>
+        <item name="android:textColor">@color/primaryDark</item>
     </style>
 
 

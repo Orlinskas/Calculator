@@ -68,6 +68,15 @@
     <string name="indent">&#160;—&#160;</string>
     <string name="save">Зберегти</string>
     <string name="meters">&#160;м.</string>
+    <string name="save_result_dialog_hint">Название расчета</string>
+    <string name="dialog_done">Сохранить</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="save_dialog_title">Сохранить?</string>
+    <string name="save_dialog_message">Введите название данного расчета</string>
+    <string name="info_meters_dimen">м</string>
+    <string name="toast_text_save_done">Сохранено!</string>
+    <string name="toast_text_save_fail">Не удалось сохранить</string>
+    <string name="save_dialog_error_text">Назовите данный расчет</string>
 
     <string-array name="steps">
         <item>10</item>

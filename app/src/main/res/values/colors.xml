@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#097EB9</color>
-    <color name="colorPrimaryDark">#076AA0</color>
-    <color name="colorAccent">#FF2B2B</color>
-    <color name="errorColor">#FD5050</color>
+    <color name="primary">#097EB9</color>
+    <color name="primaryDark">#076AA0</color>
+    <color name="accent">#FF2B2B</color>
+    <color name="error">#FD5050</color>
     <color name="orderBackgroundButton">#4CAF50</color>
 
     <color name="primaryText">#222224</color>

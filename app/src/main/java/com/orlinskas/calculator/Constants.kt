@@ -85,4 +85,11 @@ enum class LocalizationEnum(val code: String) {
     UA("ua")
 }
 
+enum class SaveStatus(val code: Int) {
+    WAIT(1),
+    IN_PROGRESS(2),
+    FAIL(3),
+    DONE(4)
+}
+
 const val SERIALIZABLE_CALCULATOR_RESULT_MODEL = "resultModel"

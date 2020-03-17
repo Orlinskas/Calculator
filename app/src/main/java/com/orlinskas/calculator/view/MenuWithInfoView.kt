@@ -65,7 +65,7 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         tooltip = SimpleTooltip.Builder(context).apply {
             anchorView(view_menu_info_image)
             text(helpText)
-            arrowColor(ContextCompat.getColor(context, R.color.colorPrimary))
+            arrowColor(ContextCompat.getColor(context, R.color.primary))
             contentView(R.layout.custom_tool_tip, R.id.tv_text)
             ignoreOverlay(true)
             gravity(Gravity.END)

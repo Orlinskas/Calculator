@@ -3,6 +3,7 @@ package com.orlinskas.calculator.di
 import com.orlinskas.calculator.adapter.ProductAdapter
 import com.orlinskas.calculator.data.provideAppDatabase
 import com.orlinskas.calculator.interactor.CalculateUseCase
+import com.orlinskas.calculator.interactor.SaveCalculatorResultUseCase
 import com.orlinskas.calculator.network.AuthInterceptor
 import com.orlinskas.calculator.network.provideApi
 import com.orlinskas.calculator.network.provideClient
@@ -23,7 +24,7 @@ val userModule = module {
 val viewModelModule = module {
     viewModel { SplashViewModel() }
     viewModel { MainViewModel(androidContext(), get()) }
-    viewModel { ResultViewModel(androidContext()) }
+    viewModel { ResultViewModel(androidContext(), get()) }
 }
 val dataModule = module {
     single { provideAppDatabase(androidContext()) }
@@ -40,6 +41,7 @@ val repositoryModule = module {
 }
 val useCaseModule = module {
     factory{ CalculateUseCase(get()) }
+    factory { SaveCalculatorResultUseCase(get()) }
 }
 val adaptersModule = module {
     factory { ProductAdapter(androidContext()) }
